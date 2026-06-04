@@ -1,0 +1,17 @@
+# Render Blueprint — Static Site
+# https://render.com/docs/static-sites
+services:
+  - type: web
+    name: quantivatech-landing
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+    routes:
+      # Required for React Router (e.g. /apps/habitica/privacy)
+      - type: rewrite
+        source: /*
+        destination: /index.html
