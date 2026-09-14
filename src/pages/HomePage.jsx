@@ -19,8 +19,8 @@ export default function HomePage() {
       <main>
         <Hero />
         <FeaturedProducts />
-        <AppShowcase app={habiticaShowcase} />
         <AppShowcase app={expenseShowcase} />
+        <AppShowcase app={habiticaShowcase} />
         <AppShowcase app={capgenShowcase} />
         <BuildingInPublic />
         <TechStack />

@@ -7,24 +7,10 @@ export const STATUS_OPTIONS = [
   'Live',
 ];
 
+const HABITICA_APP_STORE =
+  'https://apps.apple.com/us/app/habitica-habits/id6774765632';
+
 export const products = [
-  {
-    id: 1,
-    name: 'Habitica Habits',
-    category: 'Mobile App',
-    description:
-      'Build better habits with streaks, calendar heatmaps, stats, and insights — beautiful light & dark mode UI.',
-    status: 'Beta Testing',
-    progress: 85,
-    platforms: ['iOS', 'Android'],
-    logo: '/images/habitica/app-icon.png',
-    logoType: 'image',
-    showcaseId: 'habitica',
-    iosUrl: '',
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-06-04',
-  },
   {
     id: 7,
     name: 'Expense - AI Tracker',
@@ -32,7 +18,7 @@ export const products = [
     description:
       'Scan receipts with AI, track expenses & income, and export PDF/CSV — personal and business finances in one place.',
     status: 'Launching Soon',
-    progress: 90,
+    progress: 95,
     platforms: ['iOS', 'Android'],
     logo: '/images/expense/app-icon.jpg',
     logoType: 'image',
@@ -41,6 +27,40 @@ export const products = [
     androidUrl: '',
     websiteUrl: '',
     lastUpdated: '2026-09-14',
+  },
+  {
+    id: 1,
+    name: 'Habitica Habits',
+    category: 'Habit Tracker · iOS',
+    description:
+      'Track habits, streaks, and goals privately on your device. Live on the App Store.',
+    status: 'Live',
+    progress: 100,
+    platforms: ['iOS'],
+    logo: '/images/habitica/app-icon.png',
+    logoType: 'image',
+    showcaseId: 'habitica',
+    iosUrl: HABITICA_APP_STORE,
+    androidUrl: '',
+    websiteUrl: '',
+    lastUpdated: '2026-09-14',
+  },
+  {
+    id: 5,
+    name: 'CapGen',
+    category: 'AI Caption Generator · iOS',
+    description:
+      'AI-powered social captions for Instagram, TikTok, LinkedIn & X — multiple tones, languages, and instant copy.',
+    status: 'Live',
+    progress: 100,
+    platforms: ['iOS'],
+    logo: '/images/capgen/app-icon.png',
+    logoType: 'image',
+    showcaseId: 'capgen',
+    iosUrl: 'https://apps.apple.com/us/app/capgen-ai-caption-generator/id6762161529',
+    androidUrl: '',
+    websiteUrl: '',
+    lastUpdated: '2026-06-04',
   },
   {
     id: 2,
@@ -86,23 +106,6 @@ export const products = [
     androidUrl: '',
     websiteUrl: '',
     lastUpdated: '2026-06-01',
-  },
-  {
-    id: 5,
-    name: 'CapGen',
-    category: 'AI Caption Generator · iOS',
-    description:
-      'AI-powered social captions for Instagram, TikTok, LinkedIn & X — multiple tones, languages, and instant copy.',
-    status: 'Live',
-    progress: 100,
-    platforms: ['iOS'],
-    logo: '/images/capgen/app-icon.png',
-    logoType: 'image',
-    showcaseId: 'capgen',
-    iosUrl: 'https://apps.apple.com/us/app/capgen-ai-caption-generator/id6762161529',
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-06-04',
   },
   {
     id: 6,

@@ -1,17 +1,19 @@
 const base = '/images/habitica';
 
+const APP_STORE_URL = 'https://apps.apple.com/us/app/habitica-habits/id6774765632';
+
 export const habiticaShowcase = {
   id: 'habitica',
   name: 'Habitica Habits',
   tagline: 'Habit Tracker',
-  status: 'Beta Testing',
-  progress: 85,
+  status: 'Live',
+  progress: 100,
   theme: 'orange',
-  badge: 'Featured App',
+  badge: 'Live on App Store',
   gallerySubtitle:
     'Light & dark themes — dashboard, stats, calendar, and weekly insights',
   description:
-    'Build better habits, track streaks, and see your progress at a glance — with a beautiful mobile experience in light and dark mode.',
+    'Build better habits, track streaks, and see your progress at a glance — with a beautiful mobile experience in light and dark mode. Local-first: your data stays on your device.',
   features: [
     { icon: '🔥', title: 'Streaks', description: 'Stay on track with visual streak lines' },
     { icon: '📊', title: 'Stats & Insights', description: 'Powerful analytics and completion rates' },
@@ -65,7 +67,7 @@ export const habiticaShowcase = {
       theme: 'light',
     },
   ],
-  iosUrl: '',
+  iosUrl: APP_STORE_URL,
   androidUrl: '',
   websiteUrl: '',
   floatingScreenshots: [0, 3, 5],

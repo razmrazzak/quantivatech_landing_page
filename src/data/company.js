@@ -17,29 +17,29 @@ export const techStack = {
 
 export const buildingInPublic = [
   {
-    id: 1,
-    name: 'Habitica Habits',
-    estimatedLaunch: 'Q3 2026',
-    progress: 85,
-    milestones: [
-      { name: 'Idea', completed: true, date: 'Jan 2025' },
-      { name: 'Design', completed: true, date: 'Mar 2025' },
-      { name: 'Development', completed: true, date: 'Aug 2025' },
-      { name: 'Testing', completed: false, date: 'Jun 2026' },
-      { name: 'Launch', completed: false, date: 'Jul 2026' },
-    ],
-  },
-  {
     id: 4,
     name: 'Expense - AI Tracker',
     estimatedLaunch: 'Q4 2026',
-    progress: 90,
+    progress: 95,
     milestones: [
       { name: 'Idea', completed: true, date: 'Mar 2026' },
       { name: 'Design', completed: true, date: 'May 2026' },
       { name: 'Development', completed: true, date: 'Aug 2026' },
-      { name: 'Testing', completed: false, date: 'Sep 2026' },
+      { name: 'Testing', completed: true, date: 'Sep 2026' },
       { name: 'Launch', completed: false, date: 'Oct 2026' },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Habitica Habits',
+    estimatedLaunch: 'Live on iOS',
+    progress: 100,
+    milestones: [
+      { name: 'Idea', completed: true, date: 'Jan 2025' },
+      { name: 'Design', completed: true, date: 'Mar 2025' },
+      { name: 'Development', completed: true, date: 'Aug 2025' },
+      { name: 'Testing', completed: true, date: 'Jun 2026' },
+      { name: 'Launch', completed: true, date: 'Sep 2026' },
     ],
   },
   {
@@ -91,8 +91,19 @@ export const contact = {
 
 export const navLinks = [
   { label: 'Products', href: '/#products' },
+  { label: 'Expense', href: '/#expense' },
+  { label: 'Habitica', href: '/#habitica' },
+  { label: 'CapGen', href: '/#capgen' },
+  { label: 'Roadmap', href: '/#building-in-public' },
+  { label: 'Stack', href: '/#tech-stack' },
+  { label: 'About', href: '/#about' },
+];
+
+/** Full labels for mobile menu */
+export const mobileNavLinks = [
+  { label: 'Products', href: '/#products' },
+  { label: 'Expense - AI Tracker', href: '/#expense' },
   { label: 'Habitica Habits', href: '/#habitica' },
-  { label: 'Expense AI', href: '/#expense' },
   { label: 'CapGen', href: '/#capgen' },
   { label: 'Building in Public', href: '/#building-in-public' },
   { label: 'Tech Stack', href: '/#tech-stack' },
