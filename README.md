@@ -60,6 +60,19 @@ Status options: `Planning`, `Design`, `Development`, `Beta Testing`, `Launching 
 | `/apps/capgen/terms` | CapGen terms |
 | `/apps/habitica/privacy` | Habitica Habits privacy |
 | `/apps/habitica/terms` | Habitica Habits terms |
+| `/apps/expense/privacy` | Expense - AI Tracker privacy |
+| `/apps/expense/terms` | Expense - AI Tracker terms |
+| `/apps/expense/delete-account` | Expense account deletion (Google Play) |
+
+### Expense account deletion (env)
+
+Copy `.env.example` → `.env` and set:
+
+- `VITE_EXPENSE_API_BASE_URL` — e.g. `https://your-api.onrender.com`
+- `VITE_EXPENSE_FIREBASE_*` — Firebase web config for Expense - AI Tracker
+
+Then rebuild. The page signs in with Firebase, then calls `DELETE /user/account` with `Authorization: Bearer <idToken>`.
+
 
 Edit content in `src/data/legal.js`. CapGen links to canonical policies on caption-gen-api.onrender.com.
 

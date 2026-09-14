@@ -25,6 +25,9 @@ const routes = [
   '/apps/habitica/terms',
   '/apps/capgen/privacy',
   '/apps/capgen/terms',
+  '/apps/expense/privacy',
+  '/apps/expense/terms',
+  '/apps/expense/delete-account',
 ];
 
 for (const route of routes) {

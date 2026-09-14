@@ -27,6 +27,14 @@ const themes = {
     shotTag: 'bg-accent-purple/20 text-accent-purple',
     progressGlow: 'shadow-glow-purple',
   },
+  cyan: {
+    badge: 'border-accent-cyan/30 bg-accent-cyan/10 text-accent-cyan',
+    featureHover: 'hover:border-accent-cyan/30 hover:bg-accent-cyan/10',
+    dotActive: 'bg-accent-cyan',
+    shotActive: 'border-accent-cyan shadow-glow',
+    shotTag: 'bg-accent-cyan/20 text-accent-cyan',
+    progressGlow: 'shadow-glow',
+  },
 };
 
 function AppStoreButton({ href }) {
@@ -55,8 +63,10 @@ export default function AppShowcase({ app }) {
   const [heroPaused, setHeroPaused] = useState(false);
   const heroImages = [app.heroBanner, app.heroAlt].filter(Boolean);
   const t = themes[app.theme] || themes.orange;
+  const screenshots = app.screenshots || [];
   const floatingIndices = app.floatingScreenshots || [0, 2, 4];
   const legal = getLegalApp(app.id);
+  const highlights = app.highlights || [];
 
   const goToHeroSlide = useCallback(
     (index) => {
@@ -116,35 +126,36 @@ export default function AppShowcase({ app }) {
           </div>
         </div>
 
-        {/* Hero gallery — fixed 2:1 frame, same size for all projects */}
-        <div
-          className="relative mb-12 w-full overflow-hidden rounded-2xl glass-strong lg:mb-16"
-          onMouseEnter={() => setHeroPaused(true)}
-          onMouseLeave={() => setHeroPaused(false)}
-          onFocus={() => setHeroPaused(true)}
-          onBlur={() => setHeroPaused(false)}
-          role="region"
-          aria-label={`${app.name} promotional gallery`}
-          aria-roledescription="carousel"
-        >
-          <div className={`relative ${HERO_GALLERY_CLASS} bg-black/50`}>
-            {heroImages.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt={`${app.name} — ${app.tagline}`}
-                className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ease-in-out ${
-                  i === heroVariant ? 'opacity-100' : 'pointer-events-none opacity-0'
-                }`}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                draggable={false}
-              />
-            ))}
-            <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-surface/80 via-transparent to-transparent" />
-          </div>
+        {/* Hero gallery — only when marketing images exist */}
+        {heroImages.length > 0 && (
+          <div
+            className="relative mb-12 w-full overflow-hidden rounded-2xl glass-strong lg:mb-16"
+            onMouseEnter={() => setHeroPaused(true)}
+            onMouseLeave={() => setHeroPaused(false)}
+            onFocus={() => setHeroPaused(true)}
+            onBlur={() => setHeroPaused(false)}
+            role="region"
+            aria-label={`${app.name} promotional gallery`}
+            aria-roledescription="carousel"
+          >
+            <div className={`relative ${HERO_GALLERY_CLASS} bg-black/50`}>
+              {heroImages.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${app.name} — ${app.tagline}`}
+                  className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ease-in-out ${
+                    i === heroVariant ? 'opacity-100' : 'pointer-events-none opacity-0'
+                  }`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  draggable={false}
+                />
+              ))}
+              <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-surface/80 via-transparent to-transparent" />
+            </div>
 
-          {heroImages.length > 1 && (
-            <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+            {heroImages.length > 1 && (
+              <div className="absolute bottom-4 right-4 z-20 flex gap-2">
                 {heroImages.map((_, i) => (
                   <button
                     key={i}
@@ -157,9 +168,10 @@ export default function AppShowcase({ app }) {
                     aria-current={heroVariant === i ? 'true' : undefined}
                   />
                 ))}
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:mb-16">
           {app.features.map((f) => (
@@ -176,86 +188,103 @@ export default function AppShowcase({ app }) {
           ))}
         </div>
 
-        <div>
-          <h3 className="mb-2 text-center text-lg font-semibold text-white sm:text-xl">
-            App Screenshots
-          </h3>
-          <p className="mb-8 text-center text-sm text-white/50">{app.gallerySubtitle}</p>
-
-          {/* Phone preview — fixed 9:19.5 aspect, same width for all projects */}
-          <div className={`mx-auto mb-8 w-full ${PHONE_PREVIEW_MAX_WIDTH}`}>
-            <div
-              className={`gradient-border overflow-hidden rounded-[1.6rem] bg-black p-2 sm:p-2.5 ${t.progressGlow}`}
-            >
+        {highlights.length > 0 && (
+          <div className="mb-12 grid gap-4 sm:grid-cols-3 lg:mb-16">
+            {highlights.map((item) => (
               <div
-                className={`relative overflow-hidden rounded-[1.3rem] ring-1 ring-white/10 ${PHONE_ASPECT_CLASS} w-full bg-black`}
+                key={item.title}
+                className="gradient-border rounded-2xl glass p-5 transition-colors hover:bg-white/[0.05]"
               >
-                <img
-                  src={app.screenshots[activeShot].src}
-                  alt={app.screenshots[activeShot].alt}
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                  loading="lazy"
-                />
+                <h3 className="font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">{item.body}</p>
               </div>
-            </div>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              <span className={`rounded-full px-3 py-1 text-xs font-medium ${t.shotTag}`}>
-                {app.screenshots[activeShot].label}
-                {app.screenshots[activeShot].theme && (
-                  <> · {app.screenshots[activeShot].theme === 'dark' ? 'Dark' : 'Light'} mode</>
-                )}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:overflow-visible">
-            {app.screenshots.map((shot, index) => (
-              <button
-                key={shot.src}
-                type="button"
-                onClick={() => setActiveShot(index)}
-                className={`group shrink-0 overflow-hidden rounded-xl border-2 transition-all ${THUMB_WIDTH_CLASS} ${PHONE_ASPECT_CLASS} ${
-                  activeShot === index
-                    ? `${t.shotActive} scale-[1.02]`
-                    : 'border-white/10 opacity-70 hover:border-white/25 hover:opacity-100'
-                }`}
-                aria-label={`View ${shot.label} screenshot`}
-                aria-pressed={activeShot === index}
-              >
-                <img
-                  src={shot.src}
-                  alt=""
-                  className="h-full w-full object-cover object-top"
-                  loading="lazy"
-                />
-              </button>
             ))}
           </div>
-        </div>
+        )}
 
-        <div className="mt-16 hidden items-end justify-center gap-4 lg:flex">
-          {floatingIndices.map((idx, i) => {
-            const shot = app.screenshots[idx];
-            if (!shot) return null;
-            return (
+        {screenshots.length > 0 && (
+          <div>
+            <h3 className="mb-2 text-center text-lg font-semibold text-white sm:text-xl">
+              App Screenshots
+            </h3>
+            <p className="mb-8 text-center text-sm text-white/50">{app.gallerySubtitle}</p>
+
+            <div className={`mx-auto mb-8 w-full ${PHONE_PREVIEW_MAX_WIDTH}`}>
               <div
-                key={shot.src}
-                className={`w-[160px] shrink-0 overflow-hidden rounded-[1.4rem] border border-white/10 bg-black p-1.5 shadow-glass ${
-                  i === 1 ? 'z-10 -mt-6 scale-105' : i === 0 ? '-rotate-6' : 'rotate-6'
-                }`}
+                className={`gradient-border overflow-hidden rounded-[1.6rem] bg-black p-2 sm:p-2.5 ${t.progressGlow}`}
               >
-                <div className={`relative ${PHONE_ASPECT_CLASS} w-full overflow-hidden rounded-[1.2rem] bg-black`}>
+                <div
+                  className={`relative overflow-hidden rounded-[1.3rem] ring-1 ring-white/10 ${PHONE_ASPECT_CLASS} w-full bg-black`}
+                >
                   <img
-                    src={shot.src}
-                    alt=""
+                    src={screenshots[activeShot].src}
+                    alt={screenshots[activeShot].alt}
                     className="absolute inset-0 h-full w-full object-cover object-top"
                     loading="lazy"
                   />
                 </div>
               </div>
-            );
-          })}
-        </div>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+                <span className={`rounded-full px-3 py-1 text-xs font-medium ${t.shotTag}`}>
+                  {screenshots[activeShot].label}
+                  {screenshots[activeShot].theme && (
+                    <> · {screenshots[activeShot].theme === 'dark' ? 'Dark' : 'Light'} mode</>
+                  )}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:overflow-visible">
+              {screenshots.map((shot, index) => (
+                <button
+                  key={shot.src}
+                  type="button"
+                  onClick={() => setActiveShot(index)}
+                  className={`group shrink-0 overflow-hidden rounded-xl border-2 transition-all ${THUMB_WIDTH_CLASS} ${PHONE_ASPECT_CLASS} ${
+                    activeShot === index
+                      ? `${t.shotActive} scale-[1.02]`
+                      : 'border-white/10 opacity-70 hover:border-white/25 hover:opacity-100'
+                  }`}
+                  aria-label={`View ${shot.label} screenshot`}
+                  aria-pressed={activeShot === index}
+                >
+                  <img
+                    src={shot.src}
+                    alt=""
+                    className="h-full w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-16 hidden items-end justify-center gap-4 lg:flex">
+              {floatingIndices.map((idx, i) => {
+                const shot = screenshots[idx];
+                if (!shot) return null;
+                return (
+                  <div
+                    key={shot.src}
+                    className={`w-[160px] shrink-0 overflow-hidden rounded-[1.4rem] border border-white/10 bg-black p-1.5 shadow-glass ${
+                      i === 1 ? 'z-10 -mt-6 scale-105' : i === 0 ? '-rotate-6' : 'rotate-6'
+                    }`}
+                  >
+                    <div
+                      className={`relative ${PHONE_ASPECT_CLASS} w-full overflow-hidden rounded-[1.2rem] bg-black`}
+                    >
+                      <img
+                        src={shot.src}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="mt-12 flex flex-col items-center gap-6 lg:mt-16">
           {app.iosUrl && <AppStoreButton href={app.iosUrl} />}
@@ -268,6 +297,14 @@ export default function AppShowcase({ app }) {
               <Link to={`/apps/${app.id}/terms`} className="hover:text-white/70">
                 Terms & Conditions
               </Link>
+              {app.id === 'expense' && (
+                <>
+                  <span className="mx-2 text-white/20">·</span>
+                  <Link to="/apps/expense/delete-account" className="hover:text-white/70">
+                    Delete account
+                  </Link>
+                </>
+              )}
             </p>
           )}
         </div>

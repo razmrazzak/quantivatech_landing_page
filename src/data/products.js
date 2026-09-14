@@ -26,6 +26,23 @@ export const products = [
     lastUpdated: '2026-06-04',
   },
   {
+    id: 7,
+    name: 'Expense - AI Tracker',
+    category: 'AI Finance · Mobile App',
+    description:
+      'Scan receipts with AI, track expenses & income, and export PDF/CSV — personal and business finances in one place.',
+    status: 'Launching Soon',
+    progress: 90,
+    platforms: ['iOS', 'Android'],
+    logo: '/images/expense/app-icon.jpg',
+    logoType: 'image',
+    showcaseId: 'expense',
+    iosUrl: '',
+    androidUrl: '',
+    websiteUrl: '',
+    lastUpdated: '2026-09-14',
+  },
+  {
     id: 2,
     name: 'AI Trip Planner',
     category: 'SaaS / AI Tool',

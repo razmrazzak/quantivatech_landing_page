@@ -1,6 +1,11 @@
 import { brand } from './brand';
 import { habiticaPrivacySections, HABITICA_APP_NAME } from './legal/habiticaPrivacy';
 import { habiticaTermsSections } from './legal/habiticaTerms';
+import {
+  EXPENSE_APP_NAME,
+  expensePrivacySections,
+  expenseTermsSections,
+} from './legal/expenseLegal';
 
 const { name: brandName, developerName, legalNotice, websiteContactEmail } = brand;
 
@@ -162,6 +167,25 @@ export const legalApps = {
       effectiveDate: 'June 2026',
       lastUpdated: 'June 2026',
       sections: habiticaTermsSections,
+    },
+  },
+  expense: {
+    id: 'expense',
+    name: EXPENSE_APP_NAME,
+    tagline: 'AI Expense & Income Tracking',
+    appIcon: '/images/expense/app-icon.jpg',
+    contactEmail: websiteContactEmail,
+    lastUpdated: '2026-09-14',
+    privacy: {
+      externalUrl: null,
+      effectiveDate: 'September 2026',
+      sections: expensePrivacySections,
+    },
+    terms: {
+      externalUrl: null,
+      effectiveDate: 'September 2026',
+      lastUpdated: 'September 2026',
+      sections: expenseTermsSections,
     },
   },
 };

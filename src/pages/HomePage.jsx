@@ -4,6 +4,7 @@ import Hero from '../sections/Hero';
 import FeaturedProducts from '../sections/FeaturedProducts';
 import AppShowcase from '../components/AppShowcase';
 import { habiticaShowcase } from '../data/habiticaShowcase';
+import { expenseShowcase } from '../data/expenseShowcase';
 import { capgenShowcase } from '../data/capgenShowcase';
 import BuildingInPublic from '../sections/BuildingInPublic';
 import TechStack from '../sections/TechStack';
@@ -19,6 +20,7 @@ export default function HomePage() {
         <Hero />
         <FeaturedProducts />
         <AppShowcase app={habiticaShowcase} />
+        <AppShowcase app={expenseShowcase} />
         <AppShowcase app={capgenShowcase} />
         <BuildingInPublic />
         <TechStack />
