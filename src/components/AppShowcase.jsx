@@ -293,6 +293,14 @@ export default function AppShowcase({ app }) {
               <Link to={`/apps/${app.id}/privacy`} className="hover:text-white/70">
                 Privacy Policy
               </Link>
+              {app.id === 'expense' && (
+                <>
+                  <span className="mx-2 text-white/20">·</span>
+                  <Link to="/apps/expense/datenschutz" className="hover:text-white/70">
+                    Datenschutzerklärung
+                  </Link>
+                </>
+              )}
               <span className="mx-2 text-white/20">·</span>
               <Link to={`/apps/${app.id}/terms`} className="hover:text-white/70">
                 Terms & Conditions
@@ -300,8 +308,16 @@ export default function AppShowcase({ app }) {
               {app.id === 'expense' && (
                 <>
                   <span className="mx-2 text-white/20">·</span>
+                  <Link to="/apps/expense/nutzungsbedingungen" className="hover:text-white/70">
+                    Nutzungsbedingungen
+                  </Link>
+                  <span className="mx-2 text-white/20">·</span>
                   <Link to="/apps/expense/delete-account" className="hover:text-white/70">
                     Delete account
+                  </Link>
+                  <span className="mx-2 text-white/20">·</span>
+                  <Link to="/apps/expense/konto-loeschen" className="hover:text-white/70">
+                    Konto löschen
                   </Link>
                 </>
               )}

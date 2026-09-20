@@ -26,8 +26,14 @@ const routes = [
   '/apps/capgen/privacy',
   '/apps/capgen/terms',
   '/apps/expense/privacy',
+  '/apps/expense/privacy/de',
+  '/apps/expense/datenschutz',
   '/apps/expense/terms',
+  '/apps/expense/terms/de',
+  '/apps/expense/nutzungsbedingungen',
   '/apps/expense/delete-account',
+  '/apps/expense/delete-account/de',
+  '/apps/expense/konto-loeschen',
 ];
 
 for (const route of routes) {

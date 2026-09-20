@@ -6,6 +6,8 @@ import {
   expensePrivacySections,
   expenseTermsSections,
 } from './legal/expenseLegal';
+import { expensePrivacyDeSections } from './legal/expensePrivacyDe';
+import { expenseTermsDeSections } from './legal/expenseTermsDe';
 
 const { name: brandName, developerName, legalNotice, websiteContactEmail } = brand;
 
@@ -182,11 +184,23 @@ export const legalApps = {
       lastUpdated: '18 September 2026',
       sections: expensePrivacySections,
     },
+    privacyDe: {
+      externalUrl: null,
+      effectiveDate: '18. September 2026',
+      lastUpdated: '18. September 2026',
+      sections: expensePrivacyDeSections,
+    },
     terms: {
       externalUrl: null,
       effectiveDate: '18 September 2026',
       lastUpdated: '18 September 2026',
       sections: expenseTermsSections,
+    },
+    termsDe: {
+      externalUrl: null,
+      effectiveDate: '18. September 2026',
+      lastUpdated: '18. September 2026',
+      sections: expenseTermsDeSections,
     },
   },
 };

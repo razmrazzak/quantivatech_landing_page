@@ -1,10 +1,68 @@
+import { Link } from 'react-router-dom';
+
+const URL_PATTERN = /(https?:\/\/[^\s<>"')\]]+)/g;
+
+function normalizeUrlMatch(raw) {
+  const trimmed = raw.replace(/[.,;:!?]+$/g, '');
+  const trailing = raw.slice(trimmed.length);
+  return { href: trimmed, trailing };
+}
+
+function linkifyText(text) {
+  if (!text) return null;
+  const parts = text.split(URL_PATTERN);
+  return parts.map((part, index) => {
+    if (!part.match(/^https?:\/\//)) {
+      return <span key={index}>{part}</span>;
+    }
+
+    const { href, trailing } = normalizeUrlMatch(part);
+
+    try {
+      const url = new URL(href);
+      const isInternal =
+        typeof window !== 'undefined' && url.origin === window.location.origin;
+
+      if (isInternal) {
+        return (
+          <span key={index}>
+            <Link
+              to={`${url.pathname}${url.search}${url.hash}`}
+              className="break-all text-accent-blue hover:underline"
+            >
+              {href}
+            </Link>
+            {trailing}
+          </span>
+        );
+      }
+    } catch {
+      // fall through to external anchor
+    }
+
+    return (
+      <span key={index}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="break-all text-accent-blue hover:underline"
+        >
+          {href}
+        </a>
+        {trailing}
+      </span>
+    );
+  });
+}
+
 function renderBody(text) {
   if (!text?.trim()) return null;
   return text.split('\n\n').map((paragraph) => (
     <p key={paragraph.slice(0, 40)} className="mt-3 text-sm leading-relaxed text-white/60">
       {paragraph.split('\n').map((line, i, arr) => (
         <span key={i}>
-          {line}
+          {linkifyText(line)}
           {i < arr.length - 1 && <br />}
         </span>
       ))}
@@ -21,7 +79,7 @@ export default function LegalSection({ section }) {
       {section.list?.length > 0 && (
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-white/60">
           {section.list.map((item) => (
-            <li key={item.slice(0, 48)}>{item}</li>
+            <li key={item.slice(0, 48)}>{linkifyText(item)}</li>
           ))}
         </ul>
       )}
@@ -43,7 +101,7 @@ export default function LegalSection({ section }) {
                 <tr key={row[0]} className="border-b border-white/5 last:border-0">
                   {row.map((cell) => (
                     <td key={cell} className="px-4 py-3 text-white/60">
-                      {cell}
+                      {linkifyText(cell)}
                     </td>
                   ))}
                 </tr>
@@ -62,7 +120,7 @@ export default function LegalSection({ section }) {
           {sub.list?.length > 0 && (
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-white/60">
               {sub.list.map((item) => (
-                <li key={item.slice(0, 48)}>{item}</li>
+                <li key={item.slice(0, 48)}>{linkifyText(item)}</li>
               ))}
             </ul>
           )}

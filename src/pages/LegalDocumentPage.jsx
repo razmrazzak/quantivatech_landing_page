@@ -3,9 +3,51 @@ import { getLegalApp } from '../data/legal';
 import LegalLayout from '../components/LegalLayout';
 import LegalSection from '../components/LegalSection';
 
-const DOC_TITLES = {
-  privacy: 'Privacy Policy',
-  terms: 'Terms & Conditions',
+const DOC_META = {
+  privacy: {
+    title: 'Privacy Policy',
+    lastUpdatedLabel: 'Last updated',
+    effectiveDateLabel: 'Effective date',
+    backHome: 'Back to home',
+    contactLabel: 'Contact',
+    questions: 'Questions? Contact',
+    viewTerms: (name) => `View ${name} Terms`,
+    viewPrivacy: (name) => `View ${name} Privacy`,
+    homeLink: 'Quantiva Tech home',
+  },
+  privacyDe: {
+    title: 'Datenschutzerklärung',
+    lastUpdatedLabel: 'Letzte Aktualisierung',
+    effectiveDateLabel: 'Gültig ab',
+    backHome: 'Zurück zur Startseite',
+    contactLabel: 'Kontakt',
+    questions: 'Fragen? Kontaktieren Sie',
+    viewTerms: () => 'Nutzungsbedingungen',
+    viewPrivacy: () => 'Datenschutzerklärung',
+    homeLink: 'Quantiva Tech Startseite',
+  },
+  terms: {
+    title: 'Terms & Conditions',
+    lastUpdatedLabel: 'Last updated',
+    effectiveDateLabel: 'Effective date',
+    backHome: 'Back to home',
+    contactLabel: 'Contact',
+    questions: 'Questions? Contact',
+    viewTerms: (name) => `View ${name} Terms`,
+    viewPrivacy: (name) => `View ${name} Privacy`,
+    homeLink: 'Quantiva Tech home',
+  },
+  termsDe: {
+    title: 'Nutzungsbedingungen',
+    lastUpdatedLabel: 'Zuletzt aktualisiert',
+    effectiveDateLabel: 'Gültig ab',
+    backHome: 'Zurück zur Startseite',
+    contactLabel: 'Kontakt',
+    questions: 'Fragen? Kontaktieren Sie',
+    viewTerms: () => 'Nutzungsbedingungen',
+    viewPrivacy: () => 'Datenschutzerklärung',
+    homeLink: 'Quantiva Tech Startseite',
+  },
 };
 
 export default function LegalDocumentPage({ appId: appIdProp, docType: docTypeProp }) {
@@ -14,12 +56,25 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
   const docType = docTypeProp ?? params.docType;
   const app = getLegalApp(appId);
 
-  if (!app || !DOC_TITLES[docType]) {
+  if (!app || !DOC_META[docType] || !app[docType]) {
     return <Navigate to="/" replace />;
   }
 
   const document = app[docType];
-  const title = DOC_TITLES[docType];
+  const meta = DOC_META[docType];
+  const title = meta.title;
+  const hasGermanPrivacy = Boolean(app.privacyDe);
+  const hasGermanTerms = Boolean(app.termsDe);
+  const isPrivacyFamily = docType === 'privacy' || docType === 'privacyDe';
+  const isTermsFamily = docType === 'terms' || docType === 'termsDe';
+  const isGerman = docType === 'privacyDe' || docType === 'termsDe';
+
+  const privacyPath = isGerman && hasGermanPrivacy
+    ? `/apps/${appId}/datenschutz`
+    : `/apps/${appId}/privacy`;
+  const termsPath = isGerman && hasGermanTerms
+    ? `/apps/${appId}/nutzungsbedingungen`
+    : `/apps/${appId}/terms`;
 
   return (
     <LegalLayout>
@@ -31,7 +86,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to home
+          {meta.backHome}
         </Link>
 
         <header className="mb-10 border-b border-white/10 pb-8">
@@ -57,16 +112,52 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
               )}
             </div>
           </div>
+
+          {((hasGermanPrivacy && isPrivacyFamily) || (hasGermanTerms && isTermsFamily)) && (
+            <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Language">
+              <Link
+                to={isPrivacyFamily ? `/apps/${appId}/privacy` : `/apps/${appId}/terms`}
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  !isGerman
+                    ? 'bg-white/15 text-white'
+                    : 'text-white/50 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                English
+              </Link>
+              <Link
+                to={
+                  isPrivacyFamily
+                    ? `/apps/${appId}/datenschutz`
+                    : `/apps/${appId}/nutzungsbedingungen`
+                }
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  isGerman
+                    ? 'bg-white/15 text-white'
+                    : 'text-white/50 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                Deutsch
+              </Link>
+            </div>
+          )}
+
           <p className="mt-6 text-sm text-white/40">
-            {document.effectiveDate && <>Effective date: {document.effectiveDate}</>}
+            {document.effectiveDate && (
+              <>
+                {meta.effectiveDateLabel}: {document.effectiveDate}
+              </>
+            )}
             {document.effectiveDate && document.lastUpdated && <br />}
             {document.lastUpdated ? (
-              <>Last updated: {document.lastUpdated}</>
+              <>
+                {meta.lastUpdatedLabel}: {document.lastUpdated}
+              </>
             ) : (
               !document.effectiveDate && (
                 <>
-                  Last updated:{' '}
-                  {new Date(app.lastUpdated).toLocaleDateString('en-US', {
+                  {meta.lastUpdatedLabel}:{' '}
+                  {new Date(app.lastUpdated).toLocaleDateString(isGerman ? 'de-DE' : 'en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -77,7 +168,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
           </p>
           {app.contactEmail && (
             <p className="mt-2 text-sm text-white/50">
-              Contact:{' '}
+              {meta.contactLabel}:{' '}
               <a href={`mailto:${app.contactEmail}`} className="text-accent-blue hover:underline">
                 {app.contactEmail}
               </a>
@@ -111,7 +202,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
 
         <footer className="mt-12 border-t border-white/10 pt-8">
           <p className="text-sm text-white/50">
-            Questions? Contact{' '}
+            {meta.questions}{' '}
             <a
               href={`mailto:${app.contactEmail}`}
               className="text-accent-blue hover:underline"
@@ -120,23 +211,17 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
             </a>
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
-            {docType === 'privacy' ? (
-              <Link
-                to={`/apps/${appId}/terms`}
-                className="text-white/50 hover:text-white"
-              >
-                View {app.name} Terms
+            {isPrivacyFamily ? (
+              <Link to={termsPath} className="text-white/50 hover:text-white">
+                {meta.viewTerms(app.name)}
               </Link>
             ) : (
-              <Link
-                to={`/apps/${appId}/privacy`}
-                className="text-white/50 hover:text-white"
-              >
-                View {app.name} Privacy
+              <Link to={privacyPath} className="text-white/50 hover:text-white">
+                {meta.viewPrivacy(app.name)}
               </Link>
             )}
             <Link to="/" className="text-white/50 hover:text-white">
-              Quantiva Tech home
+              {meta.homeLink}
             </Link>
           </div>
         </footer>
