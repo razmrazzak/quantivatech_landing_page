@@ -1,3 +1,10 @@
+/**
+ * @deprecated Use productsData from './productsData.js' instead.
+ * This file is kept for backward compatibility.
+ */
+
+export { productsData as products, STATUS } from './productsData';
+
 export const STATUS_OPTIONS = [
   'Planning',
   'Design',
@@ -5,121 +12,4 @@ export const STATUS_OPTIONS = [
   'Beta Testing',
   'Launching Soon',
   'Live',
-];
-
-const HABITICA_APP_STORE =
-  'https://apps.apple.com/us/app/habitica-habits/id6774765632';
-
-export const products = [
-  {
-    id: 7,
-    name: 'Expense - AI Tracker',
-    category: 'AI Finance · Mobile App',
-    description:
-      'Scan receipts with AI, track expenses & income, and export PDF/CSV — personal and business finances in one place.',
-    status: 'Launching Soon',
-    progress: 95,
-    platforms: ['iOS', 'Android'],
-    logo: '/images/expense/app-icon.jpg',
-    logoType: 'image',
-    showcaseId: 'expense',
-    iosUrl: '',
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-09-14',
-  },
-  {
-    id: 1,
-    name: 'Habitica Habits',
-    category: 'Habit Tracker · iOS',
-    description:
-      'Track habits, streaks, and goals privately on your device. Live on the App Store.',
-    status: 'Live',
-    progress: 100,
-    platforms: ['iOS'],
-    logo: '/images/habitica/app-icon.png',
-    logoType: 'image',
-    showcaseId: 'habitica',
-    iosUrl: HABITICA_APP_STORE,
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-09-14',
-  },
-  {
-    id: 5,
-    name: 'CapGen',
-    category: 'AI Caption Generator · iOS',
-    description:
-      'AI-powered social captions for Instagram, TikTok, LinkedIn & X — multiple tones, languages, and instant copy.',
-    status: 'Live',
-    progress: 100,
-    platforms: ['iOS'],
-    logo: '/images/capgen/app-icon.png',
-    logoType: 'image',
-    showcaseId: 'capgen',
-    iosUrl: 'https://apps.apple.com/us/app/capgen-ai-caption-generator/id6762161529',
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-06-04',
-  },
-  {
-    id: 2,
-    name: 'AI Trip Planner',
-    category: 'SaaS / AI Tool',
-    description:
-      'Intelligent travel planning with AI-generated itineraries, budget optimization, and real-time recommendations.',
-    status: 'Development',
-    progress: 60,
-    platforms: ['Web', 'iOS'],
-    logo: '✈️',
-    iosUrl: '',
-    androidUrl: '',
-    websiteUrl: '#',
-    lastUpdated: '2026-05-28',
-  },
-  {
-    id: 3,
-    name: 'Food Delivery Platform',
-    category: 'SaaS Platform',
-    description:
-      'Full-stack food delivery marketplace with restaurant dashboards, real-time tracking, and payment integration.',
-    status: 'Development',
-    progress: 40,
-    platforms: ['Web', 'iOS', 'Android'],
-    logo: '🍔',
-    iosUrl: '',
-    androidUrl: '',
-    websiteUrl: '#',
-    lastUpdated: '2026-04-20',
-  },
-  {
-    id: 4,
-    name: 'AutoFlow AI',
-    category: 'Automation Tool',
-    description:
-      'No-code workflow automation connecting apps, APIs, and AI agents for business process optimization.',
-    status: 'Planning',
-    progress: 15,
-    platforms: ['Web'],
-    logo: '⚡',
-    iosUrl: '',
-    androidUrl: '',
-    websiteUrl: '',
-    lastUpdated: '2026-06-01',
-  },
-  {
-    id: 6,
-    name: 'VoiceNotes AI',
-    category: 'Mobile App / AI',
-    description:
-      'Voice-to-text note taking with AI summarization, action items extraction, and cross-device sync.',
-    status: 'Launching Soon',
-    progress: 95,
-    platforms: ['iOS', 'Android'],
-    logo: '🎙️',
-    iosUrl: '#',
-    androidUrl: '#',
-    websiteUrl: '#',
-    lastUpdated: '2026-05-30',
-  },
 ];
