@@ -1,4 +1,5 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getLegalApp } from '../data/legal';
 import LegalLayout from '../components/LegalLayout';
 import LegalSection from '../components/LegalSection';
@@ -76,8 +77,16 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
     ? `/apps/${appId}/nutzungsbedingungen`
     : `/apps/${appId}/terms`;
 
+  const pageTitle = appId === 'quantivatech'
+    ? `${title} | Quantiva Tech`
+    : `${title} — ${app.name} | Quantiva Tech`;
+
   return (
     <LegalLayout>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={`${title} for ${app.name}`} />
+      </Helmet>
       <article className="container-narrow mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
         <Link
           to="/"

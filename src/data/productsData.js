@@ -125,9 +125,9 @@ export const productsData = [
     termsUrl: '/apps/expense/terms',
   },
   {
-    id: 'habitizen',
+    id: 'habitzen',
     name: 'HabitZen',
-    slug: 'habitizen',
+    slug: 'habitzen',
     category: 'Habit Tracker · Mobile App',
     tagline: 'Privacy-First Habit Tracking',
     shortDescription:
@@ -137,7 +137,7 @@ export const productsData = [
     status: STATUS.ONGOING, // TODO: Confirm with owner - update to Released when live
     progress: 85, // TODO: Update progress percentage
     platforms: ['iOS', 'Android'],
-    logo: `${base}/habitizen/app-icon.png`,
+    logo: `${base}/habitzen/app-icon.png`,
     logoType: 'image',
     theme: 'purple',
     badge: 'Coming Soon',
@@ -197,37 +197,37 @@ export const productsData = [
       'Dashboard, habit creation, time tracking, streaks, and settings (placeholder images)',
     screenshots: [
       {
-        src: `${base}/habitizen/screen-dashboard.png`,
+        src: `${base}/habitzen/screen-dashboard.png`,
         alt: 'HabitZen dashboard with today\'s habits',
         label: 'Dashboard',
         theme: 'light',
       },
       {
-        src: `${base}/habitizen/screen-create.png`,
+        src: `${base}/habitzen/screen-create.png`,
         alt: 'Create new habit with tracking type selection',
         label: 'Create',
         theme: 'light',
       },
       {
-        src: `${base}/habitizen/screen-tracking.png`,
+        src: `${base}/habitzen/screen-tracking.png`,
         alt: 'Time tracking for meditation habit',
         label: 'Tracking',
         theme: 'light',
       },
       {
-        src: `${base}/habitizen/screen-streaks.png`,
+        src: `${base}/habitzen/screen-streaks.png`,
         alt: 'Streak visualization and progress',
         label: 'Streaks',
         theme: 'light',
       },
       {
-        src: `${base}/habitizen/screen-reminders.png`,
+        src: `${base}/habitzen/screen-reminders.png`,
         alt: 'Reminder settings with up to 10 notifications',
         label: 'Reminders',
         theme: 'light',
       },
       {
-        src: `${base}/habitizen/screen-settings.png`,
+        src: `${base}/habitzen/screen-settings.png`,
         alt: 'App settings and preferences',
         label: 'Settings',
         theme: 'light',

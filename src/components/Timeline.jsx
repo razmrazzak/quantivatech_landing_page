@@ -19,15 +19,16 @@ export default function Timeline({ project }) {
         </div>
       </div>
 
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <div
-          className="absolute left-0 right-0 top-5 hidden h-0.5 bg-white/10 sm:block"
+          className="absolute inset-x-0 top-5 hidden h-0.5 bg-white/10 sm:block"
           aria-hidden
         />
         <div
           className="absolute left-0 top-5 hidden h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple sm:block"
           style={{
             width: `${((completedCount) / (project.milestones.length - 1)) * 100}%`,
+            maxWidth: '100%',
           }}
           aria-hidden
         />

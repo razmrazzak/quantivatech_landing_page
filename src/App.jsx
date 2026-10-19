@@ -10,6 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:slug" element={<ProductDetailPage />} />
+        <Route path="/products/habitizen" element={<Navigate to="/products/habitzen" replace />} />
         <Route path="/apps/:appId/privacy" element={<LegalDocumentPage docType="privacy" />} />
         <Route path="/apps/:appId/terms" element={<LegalDocumentPage docType="terms" />} />
         <Route
