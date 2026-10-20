@@ -29,26 +29,95 @@ Deploy the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, etc
 
 ## Adding Products
 
-Edit `src/data/products.js` — add objects to the `products` array:
+Products are now data-driven with individual detail pages. To add a new product:
+
+### 1. Edit `src/data/productsData.js`
+
+Add a new product object to the `productsData` array:
 
 ```js
 {
-  id: 7,
-  name: "Your Product",
-  category: "SaaS",
-  description: "Short description.",
-  status: "Development",
-  progress: 50,
-  platforms: ["Web"],
-  logo: "🚀",
-  iosUrl: "",
-  androidUrl: "",
-  websiteUrl: "https://example.com",
-  lastUpdated: "2026-06-04",
+  id: 'your-product',
+  name: 'Your Product Name',
+  slug: 'your-product',  // Used in URL: /products/your-product
+  category: 'Category · Platform',
+  tagline: 'Short tagline',
+  shortDescription: 'Brief description for the card (1-2 sentences)',
+  description: 'Longer description for the detail page (2-3 sentences)',
+  status: STATUS.ONGOING,  // STATUS.RELEASED, STATUS.ONGOING, or STATUS.IN_PLANNING
+  progress: 75,  // 0-100
+  platforms: ['iOS', 'Android', 'Web'],
+  logo: '/images/products/your-product/app-icon.png',
+  logoType: 'image',  // or 'emoji' for text logos
+  theme: 'cyan',  // 'cyan', 'purple', or 'orange'
+  badge: 'Coming Soon',
+  lastUpdated: '2026-10-19',
+  iosUrl: '',  // App Store link (optional)
+  androidUrl: '',  // Play Store link (optional)
+  websiteUrl: '',  // Product website (optional)
+  features: [
+    { icon: '🚀', title: 'Feature 1', description: 'Description' },
+    { icon: '✨', title: 'Feature 2', description: 'Description' },
+    // Add 4-6 features
+  ],
+  highlights: [
+    { title: 'Highlight Title', body: 'Detailed explanation of this highlight.' },
+    // Optional: add 2-3 highlights
+  ],
+  gallerySubtitle: 'Brief description of screenshots',
+  screenshots: [
+    {
+      src: '/images/products/your-product/screen-1.png',
+      alt: 'Description of screenshot',
+      label: 'Dashboard',
+      theme: 'light',  // or 'dark'
+    },
+    // Add 4-8 screenshots
+  ],
+  floatingScreenshots: [0, 2, 4],  // Indices for desktop showcase
+  privacyUrl: '/apps/your-product/privacy',  // Optional
+  termsUrl: '/apps/your-product/terms',  // Optional
 }
 ```
 
-Status options: `Planning`, `Design`, `Development`, `Beta Testing`, `Launching Soon`, `Live`.
+### 2. Add Screenshots
+
+Create a folder for your product images:
+
+```
+public/images/products/your-product/
+  ├── app-icon.png (512x512 recommended)
+  ├── screen-1.png (1170x2532 or 19.5:9 aspect ratio)
+  ├── screen-2.png
+  └── ...
+```
+
+**Recommended screenshot size:** 1170x2532 pixels (iPhone 14 Pro) or similar 19.5:9 aspect ratio.
+
+### 3. (Optional) Add Hero Images
+
+For large promotional banners, add:
+
+```
+public/images/products/your-product/
+  ├── hero-main.png
+  └── hero-alt.png
+```
+
+Then reference them in `productsData.js`:
+
+```js
+heroBanner: '/images/products/your-product/hero-main.png',
+heroAlt: '/images/products/your-product/hero-alt.png',
+```
+
+### Status Values
+
+- `STATUS.RELEASED` — Live, publicly available
+- `STATUS.ONGOING` — In development, launching soon
+- `STATUS.IN_PLANNING` — Planned, not yet started
+
+Products are automatically grouped by status on the home page.
 
 ## Legal routes (per app)
 

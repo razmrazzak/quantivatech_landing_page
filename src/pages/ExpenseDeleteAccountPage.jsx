@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -189,8 +190,14 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
     }
   }
 
+  const pageTitle = `${t.title} — ${appName} | Quantiva Tech`;
+
   return (
     <LegalLayout>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={t.subtitle} />
+      </Helmet>
       <article className="container-narrow mx-auto max-w-lg px-4 py-12 sm:px-6 lg:py-16">
         <Link
           to="/#expense"

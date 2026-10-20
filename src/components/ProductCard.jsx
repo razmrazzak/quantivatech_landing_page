@@ -70,7 +70,9 @@ export default function ProductCard({ product }) {
         <StatusBadge status={product.status} />
       </div>
 
-      <p className="mb-5 flex-1 text-sm leading-relaxed text-white/60">{product.description}</p>
+      <p className="mb-5 flex-1 text-sm leading-relaxed text-white/60">
+        {product.shortDescription || product.description}
+      </p>
 
       <div className="mb-4">
         <ProgressTracker progress={product.progress} />
@@ -89,11 +91,11 @@ export default function ProductCard({ product }) {
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">
-        {product.showcaseId && (
+        {product.slug && (
           <a
-            href={`#${product.showcaseId}`}
+            href={`/products/${product.slug}`}
             className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
-              product.status === 'Live'
+              product.status === 'Released'
                 ? 'border-accent-purple/30 bg-accent-purple/10 text-accent-purple hover:border-accent-purple/50 hover:bg-accent-purple/20'
                 : 'border-orange-500/30 bg-orange-500/10 text-orange-300 hover:border-orange-500/50 hover:bg-orange-500/20'
             }`}

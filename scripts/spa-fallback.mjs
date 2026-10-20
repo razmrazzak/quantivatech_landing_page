@@ -1,11 +1,9 @@
 /**
  * Creates real index.html files for each client-side route so direct URLs work
  * on static hosts (Render, Netlify, S3, etc.) without relying on rewrite rules.
- * Required for App Store / Play Store privacy & terms links.
- *
- * Add new app routes here when you ship more products.
+ * Required for App Store / Play Store privacy & terms links and product detail pages.
  */
-import { cpSync, existsSync, mkdirSync } from 'fs';
+import { cpSync, existsSync, mkdirSync, readFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,6 +15,12 @@ if (!existsSync(indexHtml)) {
   console.error('spa-fallback: dist/index.html not found — run vite build first.');
   process.exit(1);
 }
+
+// Extract product slugs from productsData.js for dynamic product routes
+const productsDataPath = join(root, '../src/data/productsData.js');
+const productsDataContent = readFileSync(productsDataPath, 'utf-8');
+const slugMatches = productsDataContent.match(/slug:\s*['"]([^'"]+)['"]/g) || [];
+const productSlugs = slugMatches.map(m => m.match(/['"]([^'"]+)['"]/)[1]);
 
 const routes = [
   '/privacy',
@@ -34,6 +38,8 @@ const routes = [
   '/apps/expense/delete-account',
   '/apps/expense/delete-account/de',
   '/apps/expense/konto-loeschen',
+  // Product detail pages (auto-generated from productsData.js)
+  ...productSlugs.map(slug => `/products/${slug}`),
 ];
 
 for (const route of routes) {
