@@ -31,6 +31,20 @@ export const productsData = [
       'Scan receipts with AI, track expenses & income, and export PDF/CSV — personal and business finances in one place.',
     description:
       'Scan receipts, invoices, and bank statements — AI extracts merchant, date, amount, and more. Track personal and business finances, then export PDF or CSV when you need it.',
+    /** Marketing layout: workflow = Easy Expense–style explainable page */
+    layout: 'workflow',
+    heroHeadline: 'Never lose another receipt',
+    heroSupport:
+      'Snap a receipt, invoice, or statement. AI fills in the details — then track personal and business spending in one place.',
+    /**
+     * YouTube video ID for hero autoplay (muted). Example: 'dQw4w9WgXcQ'
+     * Leave empty until you have a demo video — hero falls back to screenshots.
+     */
+    youtubeVideoId: '',
+    youtubeTitle: 'See how Expense - AI Tracker works',
+    workflowIntroTitle: "It's fast and simple",
+    workflowIntroBody: 'Four steps from receipt to report — no spreadsheet chaos.',
+    ctaTitle: 'Ready to track with Expense - AI Tracker?',
     status: STATUS.ONGOING,
     progress: 95,
     platforms: ['iOS', 'Android'],
@@ -62,6 +76,76 @@ export const productsData = [
         icon: '📄',
         title: 'Reports',
         description: 'Export PDF or CSV anytime',
+      },
+    ],
+    workflowSteps: [
+      {
+        step: '01',
+        title: 'Scan',
+        body: 'Photograph a receipt or upload a PDF statement. Smart capture keeps the document clear and ready for AI.',
+      },
+      {
+        step: '02',
+        title: 'Extract',
+        body: 'AI reads merchant, date, amount, currency, VAT, and line items — then shows you everything to review.',
+      },
+      {
+        step: '03',
+        title: 'Organize',
+        body: 'Save as personal or business, auto-categorize, and keep income and expenses in one timeline.',
+      },
+      {
+        step: '04',
+        title: 'Export',
+        body: 'Need records for taxes or reimbursement? Download PDF or CSV reports whenever you need them.',
+      },
+    ],
+    featureSections: [
+      {
+        title: 'Receipt tracking made simple',
+        body: 'Turn paper and PDF documents into structured transactions in seconds.',
+        bullets: [
+          'AI labels merchant, total, tax, date, and currency',
+          'Review and edit before you save',
+          'Works with receipts, invoices, and bank statements',
+        ],
+        image: '/images/expense/screen-tour.png',
+        imageAlt: 'AI scan tour in Expense - AI Tracker',
+      },
+      {
+        title: 'Personal & business in one app',
+        body: 'Keep household and business finances separate without juggling multiple tools.',
+        bullets: [
+          'Choose personal, business, or both tracking modes',
+          'AI suggests personal vs business when you scan',
+          'Switch views when you need a clear picture',
+        ],
+        image: '/images/expense/screen-mode.png',
+        imageAlt: 'Tracking mode selection',
+        reverse: true,
+      },
+      {
+        title: 'See where money goes',
+        body: 'Dashboards and category charts make spending patterns obvious at a glance.',
+        bullets: [
+          'Daily and monthly spending views',
+          'Category breakdowns that update as you add entries',
+          'Past months available when you need history',
+        ],
+        image: '/images/expense/screen-reports.png',
+        imageAlt: 'Reports and spending by category',
+      },
+      {
+        title: 'Export when you need proof',
+        body: 'Share clean reports for taxes, clients, or your own records.',
+        bullets: [
+          'PDF expense reports',
+          'CSV export for spreadsheets',
+          'Your data stays under your control',
+        ],
+        image: '/images/expense/screen-past-months.png',
+        imageAlt: 'Past months history view',
+        reverse: true,
       },
     ],
     highlights: [
@@ -245,6 +329,15 @@ export const productsData = [
       'Track habits, streaks, and goals privately on your device. Live on the App Store.',
     description:
       'Build better habits, track streaks, and see your progress at a glance — with a beautiful mobile experience in light and dark mode. Local-first: your data stays on your device.',
+    layout: 'workflow',
+    heroHeadline: 'Build habits that actually stick',
+    heroSupport:
+      'Track daily habits, grow your streaks, and see your progress clearly — privately on your device, in light or dark mode.',
+    youtubeVideoId: '',
+    youtubeTitle: 'See how Habitica Habits works',
+    workflowIntroTitle: "It's fast and simple",
+    workflowIntroBody: 'Four clear steps from today’s list to lasting consistency.',
+    ctaTitle: 'Ready to build better habits?',
     status: STATUS.RELEASED,
     progress: 100,
     platforms: ['iOS'],
@@ -261,6 +354,76 @@ export const productsData = [
       { icon: '📊', title: 'Stats & Insights', description: 'Powerful analytics and completion rates' },
       { icon: '📅', title: 'Daily Habits', description: 'Calendar heatmaps and weekly views' },
       { icon: '🏆', title: 'Consistency', description: 'Top performers and momentum at a glance' },
+    ],
+    workflowSteps: [
+      {
+        step: '01',
+        title: 'Add',
+        body: 'Create the habits you care about — morning routines, workouts, reading, or anything you want to keep.',
+      },
+      {
+        step: '02',
+        title: 'Check in',
+        body: 'Mark habits done as you go. Your dashboard keeps today clear and focused.',
+      },
+      {
+        step: '03',
+        title: 'Streak',
+        body: 'Watch streaks grow and stay motivated with visual progress that rewards consistency.',
+      },
+      {
+        step: '04',
+        title: 'Review',
+        body: 'Open stats, calendars, and weekly insights to see what’s working — and what needs attention.',
+      },
+    ],
+    featureSections: [
+      {
+        title: 'Your day, organized',
+        body: 'A clean dashboard shows today’s habits so you always know what matters right now.',
+        bullets: [
+          'Today’s habit list at a glance',
+          'Quick check-ins that stay out of your way',
+          'Beautiful light and dark themes',
+        ],
+        image: '/images/habitica/screen-dashboard-light.png',
+        imageAlt: 'Habitica Habits dashboard in light mode',
+      },
+      {
+        title: 'Streaks that keep you going',
+        body: 'Visual streak lines and progress make consistency feel rewarding — not forced.',
+        bullets: [
+          'See streaks grow day by day',
+          'Spot momentum before it fades',
+          'Celebrate consistency without noise',
+        ],
+        image: '/images/habitica/screen-dashboard-dark.png',
+        imageAlt: 'Habitica Habits dashboard in dark mode',
+        reverse: true,
+      },
+      {
+        title: 'Stats & insights that make sense',
+        body: 'Completion rates, calendars, and rings help you understand your habits — not just count them.',
+        bullets: [
+          'Calendar heatmaps for the big picture',
+          'Completion rings and clear metrics',
+          'Weekly activity when you want a deeper look',
+        ],
+        image: '/images/habitica/screen-stats-light.png',
+        imageAlt: 'Habitica Habits stats and calendar',
+      },
+      {
+        title: 'Private by design',
+        body: 'Local-first tracking means your habit data stays on your device — no account required for your progress.',
+        bullets: [
+          'Your data stays on your phone',
+          'No cloud profile needed to track habits',
+          'Focus on building habits, not sharing them',
+        ],
+        image: '/images/habitica/screen-calendar-dark.png',
+        imageAlt: 'Habitica Habits calendar and streak view',
+        reverse: true,
+      },
     ],
     highlights: [],
     heroBanner: '/images/habitica/hero-transform.png',
