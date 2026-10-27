@@ -28,7 +28,7 @@ function linkifyText(text) {
           <span key={index}>
             <Link
               to={`${url.pathname}${url.search}${url.hash}`}
-              className="break-all text-accent-blue hover:underline"
+              className="break-all text-gold hover:underline"
             >
               {href}
             </Link>
@@ -46,7 +46,7 @@ function linkifyText(text) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="break-all text-accent-blue hover:underline"
+          className="break-all text-gold hover:underline"
         >
           {href}
         </a>
@@ -59,7 +59,7 @@ function linkifyText(text) {
 function renderBody(text) {
   if (!text?.trim()) return null;
   return text.split('\n\n').map((paragraph) => (
-    <p key={paragraph.slice(0, 40)} className="mt-3 text-sm leading-relaxed text-white/60">
+    <p key={paragraph.slice(0, 40)} className="mt-3 text-sm leading-relaxed text-muted">
       {paragraph.split('\n').map((line, i, arr) => (
         <span key={i}>
           {linkifyText(line)}
@@ -73,11 +73,11 @@ function renderBody(text) {
 export default function LegalSection({ section }) {
   return (
     <section>
-      <h2 className="text-lg font-semibold text-white">{section.title}</h2>
+      <h2 className="font-display text-lg font-semibold text-ink">{section.title}</h2>
       {renderBody(section.body)}
 
       {section.list?.length > 0 && (
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-white/60">
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           {section.list.map((item) => (
             <li key={item.slice(0, 48)}>{linkifyText(item)}</li>
           ))}
@@ -85,12 +85,12 @@ export default function LegalSection({ section }) {
       )}
 
       {section.table && (
-        <div className="mt-4 overflow-x-auto rounded-xl border border-white/10">
+        <div className="mt-4 overflow-x-auto rounded-xl border border-card-border">
           <table className="w-full min-w-[280px] text-left text-sm">
             <thead>
-              <tr className="border-b border-white/10 bg-white/5">
+              <tr className="border-b border-card-border bg-ivory-alt">
                 {section.table.headers.map((h) => (
-                  <th key={h} className="px-4 py-3 font-medium text-white/80">
+                  <th key={h} className="px-4 py-3 font-medium text-ink">
                     {h}
                   </th>
                 ))}
@@ -98,9 +98,9 @@ export default function LegalSection({ section }) {
             </thead>
             <tbody>
               {section.table.rows.map((row) => (
-                <tr key={row[0]} className="border-b border-white/5 last:border-0">
+                <tr key={row[0]} className="border-b border-card-border/50 last:border-0">
                   {row.map((cell) => (
-                    <td key={cell} className="px-4 py-3 text-white/60">
+                    <td key={cell} className="px-4 py-3 text-muted">
                       {linkifyText(cell)}
                     </td>
                   ))}
@@ -114,11 +114,11 @@ export default function LegalSection({ section }) {
       {section.bodyAfterList && renderBody(section.bodyAfterList)}
 
       {section.subsections?.map((sub) => (
-        <div key={sub.title} className="mt-6 border-l-2 border-white/10 pl-4">
-          <h3 className="text-base font-medium text-white/90">{sub.title}</h3>
+        <div key={sub.title} className="mt-6 border-l-2 border-card-border pl-4">
+          <h3 className="text-base font-medium text-ink/90">{sub.title}</h3>
           {renderBody(sub.body)}
           {sub.list?.length > 0 && (
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-white/60">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
               {sub.list.map((item) => (
                 <li key={item.slice(0, 48)}>{linkifyText(item)}</li>
               ))}

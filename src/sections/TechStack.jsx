@@ -2,11 +2,19 @@ import { techStack } from '../data/company';
 import SectionHeading from '../components/SectionHeading';
 
 const categoryColors = {
-  Frontend: 'from-blue-500/20 to-cyan-500/10 border-blue-500/30',
-  Backend: 'from-green-500/20 to-emerald-500/10 border-green-500/30',
-  Database: 'from-amber-500/20 to-orange-500/10 border-amber-500/30',
-  Cloud: 'from-purple-500/20 to-violet-500/10 border-purple-500/30',
-  AI: 'from-pink-500/20 to-rose-500/10 border-pink-500/30',
+  Frontend: 'border-blue-200 bg-blue-50',
+  Backend: 'border-green-200 bg-green-50',
+  Database: 'border-amber-200 bg-amber-50',
+  Cloud: 'border-purple-200 bg-purple-50',
+  AI: 'border-pink-200 bg-pink-50',
+};
+
+const categoryLabelColors = {
+  Frontend: 'text-blue-700',
+  Backend: 'text-green-700',
+  Database: 'text-amber-700',
+  Cloud: 'text-purple-700',
+  AI: 'text-pink-700',
 };
 
 export default function TechStack() {
@@ -24,16 +32,16 @@ export default function TechStack() {
           {Object.entries(techStack).map(([category, tools]) => (
             <div
               key={category}
-              className={`gradient-border rounded-2xl border bg-gradient-to-br p-6 glass ${categoryColors[category]}`}
+              className={`rounded-card border p-6 ${categoryColors[category]}`}
             >
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/80">
+              <h3 className={`mb-4 text-sm font-semibold uppercase tracking-wider ${categoryLabelColors[category]}`}>
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-white/90 transition-colors hover:border-white/20 hover:bg-white/10"
+                    className="rounded-lg border border-card-border bg-white px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:border-gold hover:text-gold"
                   >
                     {tool}
                   </span>

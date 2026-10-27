@@ -58,7 +58,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding scroll-mt-20 bg-surface-elevated/50">
+    <section id="contact" className="section-padding scroll-mt-20 bg-ivory-alt">
       <div className="container-narrow mx-auto">
         <SectionHeading
           badge="Get in Touch"
@@ -67,10 +67,10 @@ export default function Contact() {
           subtitle="Have a project in mind? Let's build something amazing together."
         />
 
-        <div className="gradient-border mx-auto max-w-2xl rounded-2xl glass-strong p-8 text-center lg:p-12">
-          <p className="text-lg text-white/80">
+        <div className="card mx-auto max-w-2xl p-8 text-center lg:p-12">
+          <p className="text-lg text-muted">
             Have a project in mind?{' '}
-            <span className="font-semibold text-white">Let's build something amazing together.</span>
+            <span className="font-semibold text-ink">Let's build something amazing together.</span>
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -80,18 +80,18 @@ export default function Contact() {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 text-left transition-all hover:border-accent-blue/40 hover:bg-white/10 hover:shadow-glow"
+                className="group flex items-center gap-4 rounded-xl border border-card-border bg-card p-4 text-left transition-all hover:border-gold hover:shadow-lg"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-accent-blue/30 to-accent-purple/30 text-accent-blue group-hover:text-white">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white">
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     {link.icon}
                   </svg>
                 </span>
                 <span>
-                  <span className="block text-xs font-medium uppercase tracking-wider text-white/50">
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-gold">
                     {link.label}
                   </span>
-                  <span className="block text-sm font-medium text-white group-hover:text-accent-cyan">
+                  <span className="block text-sm font-medium text-ink group-hover:text-gold">
                     {link.value}
                   </span>
                 </span>
@@ -101,7 +101,7 @@ export default function Contact() {
 
           <a
             href={`mailto:${contact.email}`}
-            className="mt-8 inline-flex rounded-xl bg-gradient-to-r from-accent-blue to-accent-purple px-8 py-3.5 font-semibold text-white shadow-glow transition-all hover:scale-[1.02] hover:opacity-95"
+            className="mt-8 inline-flex btn-primary"
           >
             Start a Conversation
           </a>

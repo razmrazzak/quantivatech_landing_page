@@ -12,10 +12,10 @@ export default function Founder() {
           subtitle="The person behind the Quantiva Tech brand and its products."
         />
 
-        <div className="gradient-border mx-auto max-w-3xl rounded-2xl glass-strong overflow-hidden lg:flex">
-          <div className="relative flex shrink-0 items-center justify-center bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 p-8 lg:w-72">
-            <div className="relative h-48 w-48 overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated shadow-glass lg:h-56 lg:w-56">
-              <div className="flex h-full w-full flex-col items-center justify-center text-white/30">
+        <div className="card mx-auto max-w-3xl overflow-hidden lg:flex">
+          <div className="relative flex shrink-0 items-center justify-center bg-ivory-alt p-8 lg:w-72">
+            <div className="relative h-48 w-48 overflow-hidden rounded-2xl border border-card-border bg-card shadow-md lg:h-56 lg:w-56">
+              <div className="flex h-full w-full flex-col items-center justify-center text-muted/30">
                 <svg className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
@@ -30,15 +30,15 @@ export default function Founder() {
           </div>
 
           <div className="flex flex-1 flex-col justify-center p-8 lg:p-10">
-            <h3 className="text-2xl font-bold text-white">{founder.name}</h3>
-            <p className="mt-1 text-accent-purple">{founder.role}</p>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">{founder.bio}</p>
+            <h3 className="font-display text-2xl font-semibold text-ink">{founder.name}</h3>
+            <p className="mt-1 text-gold">{founder.role}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">{founder.bio}</p>
 
             <ul className="mt-6 flex flex-wrap gap-2">
               {founder.expertise.map((skill) => (
                 <li
                   key={skill}
-                  className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80"
+                  className="rounded-lg border border-card-border bg-ivory-alt px-3 py-1.5 text-xs font-medium text-ink"
                 >
                   {skill}
                 </li>

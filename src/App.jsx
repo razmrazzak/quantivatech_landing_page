@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import AppDetailPage from './pages/AppDetailPage';
 import LegalDocumentPage from './pages/LegalDocumentPage';
 import ExpenseDeleteAccountPage from './pages/ExpenseDeleteAccountPage';
 
@@ -8,6 +9,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        
+        {/* App Detail Pages */}
+        <Route path="/apps/:slug" element={<AppDetailPage />} />
+        
+        {/* Legal Pages */}
         <Route path="/apps/:appId/privacy" element={<LegalDocumentPage docType="privacy" />} />
         <Route path="/apps/:appId/terms" element={<LegalDocumentPage docType="terms" />} />
         <Route
