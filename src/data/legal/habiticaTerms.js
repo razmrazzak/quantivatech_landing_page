@@ -103,7 +103,7 @@ Email: razmyrazzak@outlook.com`,
   },
   {
     title: '8. Notifications and Reminders',
-    body: 'If enabled, the App may schedule local notifications on your device. Notification delivery depends on device settings, operating system behavior, battery optimization settings, notification permissions, and Do Not Disturb settings. We do not guarantee that reminders will always be delivered or delivered at the exact scheduled time. Habitica Habits should not be relied upon for critical, emergency, medical, legal, or safety-related notifications.',
+    body: 'If enabled, the App may schedule local notifications on your device. Notification delivery depends on device settings, operating system behavior, battery optimization settings, notification permissions, and Do Not Disturb settings. We do not guarantee that reminders will always be delivered or delivered at the exact scheduled time. HabitZen: Habit Tracker should not be relied upon for critical, emergency, medical, legal, or safety-related notifications.',
   },
   {
     title: '9. Intellectual Property',
@@ -131,7 +131,7 @@ Email: razmyrazzak@outlook.com`,
   },
   {
     title: '15. Apple App Store and Google Play',
-    body: 'If you downloaded the App from Apple App Store: These Terms are between you and Mohamed Razmy Abdul Razzak (developer of Habitica Habits under the Quantiva Tech brand), not Apple. Apple has no obligation to provide support or maintenance. Apple is not responsible for claims relating to the App. Apple and its subsidiaries are third-party beneficiaries of these Terms. If you downloaded the App from Google Play, you also agree to applicable Google Play terms and policies.',
+    body: 'If you downloaded the App from Apple App Store: These Terms are between you and Mohamed Razmy Abdul Razzak (developer of HabitZen: Habit Tracker under the Quantiva Tech brand), not Apple. Apple has no obligation to provide support or maintenance. Apple is not responsible for claims relating to the App. Apple and its subsidiaries are third-party beneficiaries of these Terms. If you downloaded the App from Google Play, you also agree to applicable Google Play terms and policies.',
   },
   {
     title: '16. Changes to These Terms',

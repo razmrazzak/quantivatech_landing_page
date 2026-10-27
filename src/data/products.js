@@ -30,7 +30,7 @@ export const products = [
   },
   {
     id: 1,
-    name: 'Habitica Habits',
+    name: 'HabitZen: Habit Tracker',
     category: 'Habit Tracker · iOS',
     description:
       'Track habits, streaks, and goals privately on your device. Live on the App Store.',

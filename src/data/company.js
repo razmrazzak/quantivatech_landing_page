@@ -31,7 +31,7 @@ export const buildingInPublic = [
   },
   {
     id: 1,
-    name: 'Habitica Habits',
+    name: 'HabitZen: Habit Tracker',
     estimatedLaunch: 'Live on iOS',
     progress: 100,
     milestones: [
@@ -92,7 +92,7 @@ export const contact = {
 export const navLinks = [
   { label: 'Products', href: '/#products' },
   { label: 'Expense', href: '/#expense' },
-  { label: 'Habitica', href: '/#habitica' },
+  { label: 'HabitZen', href: '/#habitica' },
   { label: 'CapGen', href: '/#capgen' },
   { label: 'Roadmap', href: '/#building-in-public' },
   { label: 'Stack', href: '/#tech-stack' },
@@ -103,7 +103,7 @@ export const navLinks = [
 export const mobileNavLinks = [
   { label: 'Products', href: '/#products' },
   { label: 'Expense - AI Tracker', href: '/#expense' },
-  { label: 'Habitica Habits', href: '/#habitica' },
+  { label: 'HabitZen: Habit Tracker', href: '/#habitica' },
   { label: 'CapGen', href: '/#capgen' },
   { label: 'Building in Public', href: '/#building-in-public' },
   { label: 'Tech Stack', href: '/#tech-stack' },

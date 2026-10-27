@@ -58,8 +58,8 @@ Status options: `Planning`, `Design`, `Development`, `Beta Testing`, `Launching 
 | `/terms` | Quantiva Tech website terms |
 | `/apps/capgen/privacy` | CapGen privacy |
 | `/apps/capgen/terms` | CapGen terms |
-| `/apps/habitica/privacy` | Habitica Habits privacy |
-| `/apps/habitica/terms` | Habitica Habits terms |
+| `/apps/habitica/privacy` | HabitZen: Habit Tracker privacy |
+| `/apps/habitica/terms` | HabitZen: Habit Tracker terms |
 | `/apps/expense/privacy` | Expense - AI Tracker privacy |
 | `/apps/expense/terms` | Expense - AI Tracker terms |
 | `/apps/expense/delete-account` | Expense account deletion (Google Play) |

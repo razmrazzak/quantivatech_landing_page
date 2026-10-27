@@ -4,8 +4,8 @@ const APP_STORE_URL = 'https://apps.apple.com/us/app/habitica-habits/id677476563
 
 export const habiticaShowcase = {
   id: 'habitica',
-  name: 'Habitica Habits',
-  tagline: 'Habit Tracker',
+  name: 'HabitZen: Habit Tracker',
+  tagline: 'Local-first habit tracking',
   status: 'Live',
   progress: 100,
   theme: 'orange',
@@ -26,43 +26,43 @@ export const habiticaShowcase = {
   screenshots: [
     {
       src: `${base}/screen-dashboard-light.png`,
-      alt: 'Habitica Habits dashboard — light mode with today\'s habits and streak counter',
+      alt: 'HabitZen: Habit Tracker dashboard — light mode with today\'s habits and streak counter',
       label: 'Dashboard',
       theme: 'light',
     },
     {
       src: `${base}/screen-stats-light.png`,
-      alt: 'Habitica Habits stats screen — light mode calendar and completion rings',
+      alt: 'HabitZen: Habit Tracker stats screen — light mode calendar and completion rings',
       label: 'Stats',
       theme: 'light',
     },
     {
       src: `${base}/screen-dashboard-dark.png`,
-      alt: 'Habitica Habits dashboard — dark mode habit cards',
+      alt: 'HabitZen: Habit Tracker dashboard — dark mode habit cards',
       label: 'Dashboard',
       theme: 'dark',
     },
     {
       src: `${base}/screen-stats-dark.png`,
-      alt: 'Habitica Habits stats — dark mode with teal accent calendar',
+      alt: 'HabitZen: Habit Tracker stats — dark mode with teal accent calendar',
       label: 'Stats',
       theme: 'dark',
     },
     {
       src: `${base}/screen-calendar-dark.png`,
-      alt: 'Habitica Habits calendar view — streak visualization and metrics',
+      alt: 'HabitZen: Habit Tracker calendar view — streak visualization and metrics',
       label: 'Calendar',
       theme: 'dark',
     },
     {
       src: `${base}/screen-stats-weekly.png`,
-      alt: 'Habitica Habits weekly activity and top performers',
+      alt: 'HabitZen: Habit Tracker weekly activity and top performers',
       label: 'Weekly',
       theme: 'dark',
     },
     {
       src: `${base}/screen-calendar-light.png`,
-      alt: 'Habitica Habits calendar — light mode progress rings',
+      alt: 'HabitZen: Habit Tracker calendar — light mode progress rings',
       label: 'Calendar',
       theme: 'light',
     },

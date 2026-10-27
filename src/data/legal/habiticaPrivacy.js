@@ -1,4 +1,4 @@
-export const HABITICA_APP_NAME = 'Habitica Habits';
+export const HABITICA_APP_NAME = 'HabitZen: Habit Tracker';
 
 export const habiticaPrivacySections = [
   {
@@ -110,6 +110,6 @@ This Privacy Policy explains what information the app handles, how it is stored,
   },
   {
     title: '14. Contact Us',
-    body: 'If you have questions about this Privacy Policy or your privacy rights, please contact:\n\nMohamed Razmy Abdul Razzak (developer of Habitica Habits, published under the Quantiva Tech brand)\nEmail: razmyrazzak@outlook.com\nLocation: Frankfurt am Main, Germany',
+    body: 'If you have questions about this Privacy Policy or your privacy rights, please contact:\n\nMohamed Razmy Abdul Razzak (developer of HabitZen: Habit Tracker, published under the Quantiva Tech brand)\nEmail: razmyrazzak@outlook.com\nLocation: Frankfurt am Main, Germany',
   },
 ];

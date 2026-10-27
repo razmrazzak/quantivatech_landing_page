@@ -155,7 +155,7 @@ export const legalApps = {
   habitica: {
     id: 'habitica',
     name: HABITICA_APP_NAME,
-    tagline: 'Habit Tracker',
+    tagline: 'Local-first habit tracking',
     appIcon: '/images/habitica/app-icon.png',
     contactEmail: 'razmyrazzak@outlook.com',
     lastUpdated: '2026-06-01',
