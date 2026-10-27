@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
@@ -24,58 +25,195 @@ function AppStoreButton({ href, label = 'Download on the App Store' }) {
   );
 }
 
-function VideoEmbed({ youtubeId, appName }) {
-  if (!youtubeId) {
+function useReveal(options = { threshold: 0.2 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (
+      typeof window === 'undefined' ||
+      !('IntersectionObserver' in window) ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ) {
+      setVisible(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setVisible(true);
+        observer.disconnect();
+      }
+    }, options);
+    observer.observe(node);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return [ref, visible];
+}
+
+function PhoneFrame({ src, alt, className = '', loading = 'lazy' }) {
+  return (
+    <div
+      className={`relative rounded-[2.4rem] bg-ink p-[9px] shadow-[0_24px_60px_rgba(20,33,61,0.22)] ring-1 ring-ink/10 ${className}`}
+    >
+      <div className="pointer-events-none absolute left-1/2 top-[15px] z-10 h-[14px] w-[30%] -translate-x-1/2 rounded-pill bg-ink" aria-hidden />
+      <div className="overflow-hidden rounded-[1.9rem] bg-card">
+        <img
+          src={src}
+          alt={alt}
+          loading={loading}
+          width={473}
+          height={1024}
+          className="block aspect-[473/1024] w-full object-cover object-top"
+        />
+      </div>
+    </div>
+  );
+}
+
+function VideoEmbed({ youtubeId, appName, poster = [] }) {
+  if (youtubeId) {
+    const params = `autoplay=1&mute=1&playsinline=1&loop=1&playlist=${youtubeId}&rel=0`;
     return (
-      <div className="aspect-video w-full overflow-hidden rounded-card border border-card-border bg-ivory-alt">
-        <div className="flex h-full flex-col items-center justify-center text-center p-8">
-          <svg className="h-16 w-16 text-muted/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <p className="mt-4 text-sm text-muted">Video demo coming soon</p>
+      <div className="relative w-full overflow-hidden rounded-card border border-card-border bg-ink shadow-card">
+        <div className="relative aspect-video w-full">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?${params}`}
+            title={`${appName} demo video`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+            className="absolute inset-0 h-full w-full"
+          />
         </div>
       </div>
     );
   }
 
+  const [left, center, right] = poster;
+
   return (
-    <div className="aspect-video w-full overflow-hidden rounded-card border border-card-border">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&playsinline=1&loop=1&rel=0`}
-        title={`${appName} demo video`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="h-full w-full"
-      />
+    <figure className="relative w-full overflow-hidden rounded-card border border-card-border bg-gradient-to-br from-ivory via-[#f6eee0] to-[#e9d9bb] shadow-card">
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gold/20 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-32 -left-16 h-72 w-72 rounded-full bg-white/70 blur-3xl" aria-hidden />
+
+      <div className="relative flex items-end justify-center gap-4 px-6 pt-10 sm:gap-8 sm:pt-14">
+        {left && (
+          <PhoneFrame src={left} alt="" className="hidden w-36 translate-y-6 -rotate-6 opacity-90 sm:block lg:w-44" />
+        )}
+        {center && (
+          <PhoneFrame src={center} alt={`${appName} app screen`} className="w-44 translate-y-2 sm:w-52 lg:w-60" />
+        )}
+        {right && (
+          <PhoneFrame src={right} alt="" className="hidden w-36 translate-y-6 rotate-6 opacity-90 sm:block lg:w-44" />
+        )}
+
+        <div className="absolute inset-0 flex items-center justify-center" aria-hidden>
+          <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-[0_12px_40px_rgba(20,33,61,0.25)] ring-1 ring-gold/40 backdrop-blur sm:h-24 sm:w-24">
+            <svg viewBox="0 0 24 24" className="ml-1 h-9 w-9 text-gold sm:h-10 sm:w-10" fill="currentColor">
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.97-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z" />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <figcaption className="relative border-t border-card-border/80 bg-card/80 px-6 py-4 text-center text-sm font-medium text-muted backdrop-blur">
+        Video coming soon
+      </figcaption>
+    </figure>
+  );
+}
+
+function FlowArrow({ flip }) {
+  const [ref, visible] = useReveal({ threshold: 0.6 });
+  return (
+    <div ref={ref} className="flex justify-center py-2 sm:py-3" aria-hidden>
+      <svg
+        viewBox="0 0 200 140"
+        className={`h-28 w-40 text-gold transition-opacity duration-500 sm:h-36 sm:w-52 ${flip ? '-scale-x-100' : ''} ${visible ? 'opacity-100' : 'opacity-0'}`}
+        fill="none"
+      >
+        <path
+          d="M64 14 C 64 74, 136 58, 136 112"
+          stroke="currentColor"
+          strokeOpacity="0.18"
+          strokeWidth="14"
+          strokeLinecap="round"
+        />
+        <path
+          d="M64 14 C 64 74, 136 58, 136 112"
+          stroke="currentColor"
+          strokeWidth="4.5"
+          strokeLinecap="round"
+          pathLength="1"
+          strokeDasharray="1"
+          strokeDashoffset={visible ? 0 : 1}
+          style={{ transition: 'stroke-dashoffset 900ms ease-out' }}
+        />
+        <path
+          d="M121 106 L136 132 L151 106 Z"
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinejoin="round"
+          className={`transition-opacity delay-700 duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+        />
+        <circle cx="64" cy="14" r="7" fill="currentColor" />
+        <circle cx="64" cy="14" r="12" stroke="currentColor" strokeOpacity="0.3" strokeWidth="2" />
+      </svg>
     </div>
   );
 }
 
-function HowItWorksStep({ step, index, total }) {
-  const hasScreenshot = step.screenshot && !step.screenshot.includes('placeholder');
-  
+function FlowStep({ step, index }) {
+  const [ref, visible] = useReveal({ threshold: 0.15 });
+  const reversed = index % 2 === 1;
+
   return (
-    <div className="relative">
-      {index < total - 1 && (
-        <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gold/30" aria-hidden />
-      )}
-      <div className="relative flex gap-6">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gold/10 text-2xl font-bold text-gold ring-4 ring-ivory">
-          {step.step}
+    <article
+      ref={ref}
+      className={`card overflow-hidden transition-all duration-700 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+    >
+      <div className="grid items-center gap-8 p-6 sm:p-10 md:grid-cols-2 md:gap-12 lg:p-12">
+        <div className={reversed ? 'md:order-2' : ''}>
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold font-display text-xl font-semibold text-white shadow-md">
+              {step.step}
+            </span>
+            <span className="eyebrow">Step {step.step}</span>
+          </div>
+          <h3 className="mt-5 font-display text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+            {step.title}
+          </h3>
+          <p className="mt-4 text-lg leading-relaxed text-muted">{step.description}</p>
         </div>
-        <div className="flex-1 pb-12">
-          <h3 className="font-display text-xl font-semibold text-ink">{step.title}</h3>
-          <p className="mt-2 text-muted">{step.description}</p>
-          {hasScreenshot && (
-            <img 
-              src={step.screenshot} 
-              alt={step.title}
-              className="mt-4 w-48 rounded-lg border border-card-border shadow-md"
-            />
-          )}
+
+        <div className={`flex justify-center ${reversed ? 'md:order-1' : ''}`}>
+          <div className="relative">
+            <div className="absolute inset-x-6 bottom-0 top-10 rounded-full bg-gold/15 blur-2xl" aria-hidden />
+            <PhoneFrame src={step.screenshot} alt={step.alt || step.title} className="relative w-56 sm:w-64 lg:w-72" />
+          </div>
         </div>
       </div>
+    </article>
+  );
+}
+
+function ScreenshotGallery({ screenshots }) {
+  return (
+    <div className="flex flex-wrap justify-center gap-x-4 gap-y-10 sm:gap-x-6 lg:gap-x-4">
+      {screenshots.map((shot) => (
+        <figure
+          key={shot.src}
+          className={`w-36 sm:w-40 ${screenshots.length > 6 ? 'lg:w-[8.5rem]' : 'lg:w-[9.5rem]'}`}
+        >
+          <PhoneFrame src={shot.src} alt={shot.alt} />
+          <figcaption className="mt-3 text-center text-sm font-medium text-muted">{shot.label}</figcaption>
+        </figure>
+      ))}
     </div>
   );
 }
@@ -199,7 +337,7 @@ export default function AppDetailPage() {
           {!app.comingSoon && (
             <section className="section-padding">
               <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
-                <VideoEmbed youtubeId={app.youtubeId} appName={app.name} />
+                <VideoEmbed youtubeId={app.youtubeId} appName={app.name} poster={app.videoPoster || []} />
               </div>
             </section>
           )}
@@ -207,32 +345,45 @@ export default function AppDetailPage() {
           {/* How It Works Section */}
           {!app.comingSoon && app.howItWorks && app.howItWorks.length > 0 && (
             <section className="section-padding bg-ivory-alt">
-              <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="container-narrow mx-auto px-0 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                   <span className="eyebrow">Simple & Intuitive</span>
                   <h2 className="mt-4 font-display text-3xl font-semibold text-ink sm:text-4xl">
                     How It Works
                   </h2>
-                  <p className="mt-4 text-lg text-muted">Get started in minutes with our easy workflow</p>
+                  <p className="mt-4 text-lg text-muted">Follow the steps from top to bottom to see what using the app looks like.</p>
                 </div>
 
-                <div className="mx-auto max-w-3xl">
+                <ol className="mx-auto max-w-5xl list-none p-0">
                   {app.howItWorks.map((step, index) => (
-                    <HowItWorksStep
-                      key={step.step}
-                      step={step}
-                      index={index}
-                      total={app.howItWorks.length}
-                    />
+                    <li key={step.step}>
+                      <FlowStep step={step} index={index} />
+                      {index < app.howItWorks.length - 1 && <FlowArrow flip={index % 2 === 1} />}
+                    </li>
                   ))}
+                </ol>
+              </div>
+            </section>
+          )}
+
+          {/* Screenshots Gallery */}
+          {!app.comingSoon && app.screenshots && app.screenshots.length > 0 && (
+            <section className="section-padding">
+              <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12">
+                  <span className="eyebrow">Screenshots</span>
+                  <h2 className="mt-4 font-display text-3xl font-semibold text-ink sm:text-4xl">
+                    A closer look
+                  </h2>
                 </div>
+                <ScreenshotGallery screenshots={app.screenshots} />
               </div>
             </section>
           )}
 
           {/* Features Section */}
           {app.features && app.features.length > 0 && (
-            <section className="section-padding">
+            <section className="section-padding bg-ivory-alt">
               <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                   <span className="eyebrow">Features</span>
@@ -256,7 +407,7 @@ export default function AppDetailPage() {
 
           {/* FAQ Section */}
           {!app.comingSoon && app.faq && app.faq.length > 0 && (
-            <section className="section-padding bg-ivory-alt">
+            <section className="section-padding">
               <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                   <span className="eyebrow">FAQ</span>
@@ -279,14 +430,16 @@ export default function AppDetailPage() {
 
           {/* CTA Section */}
           {!app.comingSoon && (
-            <section className="section-padding">
+            <section className="section-padding bg-ivory-alt">
               <div className="container-narrow mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="card mx-auto max-w-3xl p-8 text-center lg:p-12">
                   <h2 className="font-display text-3xl font-semibold text-ink">
                     Ready to get started?
                   </h2>
                   <p className="mt-4 text-lg text-muted">
-                    Join thousands of users who love {app.name}
+                    {app.appStoreUrl || app.playStoreUrl
+                      ? `Download ${app.name} and try it for yourself.`
+                      : `${app.name} is launching soon.`}
                   </p>
                   
                   <div className="mt-8 flex flex-wrap justify-center gap-4">

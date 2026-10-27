@@ -1,4 +1,7 @@
 // App detail page data for each product
+import { expenseShowcase } from './expenseShowcase';
+import { habiticaShowcase } from './habiticaShowcase';
+import { capgenShowcase } from './capgenShowcase';
 
 export const appPages = {
   expense: {
@@ -58,34 +61,45 @@ export const appPages = {
     howItWorks: [
       {
         step: 1,
-        title: 'Snap a Receipt',
-        description: 'Take a photo of any receipt or manually enter an expense or income entry',
-        screenshot: '/images/expense/screenshot-1.jpg',
+        title: 'Choose how you use it',
+        description: 'Tell the app whether you are tracking personal money, a business, or both. You can change this later in Settings.',
+        screenshot: '/images/expense/screen-mode.png',
+        alt: 'Choose personal, business, or both tracking modes',
       },
       {
         step: 2,
-        title: 'AI Reads It',
-        description: 'Our AI extracts merchant name, amount, date, and category automatically',
-        screenshot: '/images/expense/screenshot-2.jpg',
+        title: 'Snap a receipt or import a statement',
+        description: 'Take a photo of a receipt or upload a PDF bank statement. AI fills in the merchant, date and amount for you, and sorts it into a category.',
+        screenshot: '/images/expense/screen-tour.png',
+        alt: 'How it helps — AI scan, bank statements, smart categories, and export',
       },
       {
         step: 3,
-        title: 'Review & Organize',
-        description: 'Check the details, adjust categories, and add notes or tags as needed',
-        screenshot: '/images/expense/screenshot-3.jpg',
+        title: 'See where your money goes',
+        description: 'Simple charts show your daily spending and which categories take the biggest share.',
+        screenshot: '/images/expense/screen-reports.png',
+        alt: 'Reports — daily spending and spending by category',
       },
       {
         step: 4,
-        title: 'Track Your Spending',
-        description: 'See monthly summaries, spending by category, and income vs expenses',
-        screenshot: '/images/expense/screenshot-4.jpg',
+        title: 'Look back at any month',
+        description: 'Open past months to compare expenses, income and your balance, without losing track of this month.',
+        screenshot: '/images/expense/screen-past-months.png',
+        alt: 'Past months — expenses, income, and category charts',
       },
       {
         step: 5,
-        title: 'Export Reports',
-        description: 'Generate PDF reports or CSV files for your accountant or tax preparation',
-        screenshot: '/images/expense/screenshot-5.jpg',
+        title: 'Make it yours and export',
+        description: 'Pick your language and currency, add your business name, and export PDF or CSV reports whenever you need them.',
+        screenshot: '/images/expense/screen-settings.png',
+        alt: 'Settings — language, currency, business name, and tracking mode',
       },
+    ],
+    screenshots: expenseShowcase.screenshots,
+    videoPoster: [
+      '/images/expense/screen-mode.png',
+      '/images/expense/screen-welcome.png',
+      '/images/expense/screen-reports.png',
     ],
     faq: [
       {
@@ -167,28 +181,38 @@ export const appPages = {
     howItWorks: [
       {
         step: 1,
-        title: 'Add Your Habits',
-        description: 'Create habits you want to build: exercise, reading, meditation, or anything else',
-        screenshot: '/images/habitica/screenshot-1.jpg',
+        title: 'Add a habit and tick it off',
+        description: 'Tap the + button to add a habit like meditating or a morning run. Each day, mark it done right from your dashboard.',
+        screenshot: '/images/habitica/screen-dashboard-light.png',
+        alt: 'Habitica Habits dashboard with today\'s habits and streak counter',
       },
       {
         step: 2,
-        title: 'Check In Daily',
-        description: 'Tap to mark a habit as done for today. It takes just a second',
-        screenshot: '/images/habitica/screenshot-2.jpg',
+        title: 'Watch your calendar fill up',
+        description: 'Every day you show up is marked on a calendar, so you can see your consistency at a glance.',
+        screenshot: '/images/habitica/screen-calendar-light.png',
+        alt: 'Habitica Habits calendar with daily progress rings',
       },
       {
         step: 3,
-        title: 'Build Streaks',
-        description: 'Watch your streak grow as you stay consistent day after day',
-        screenshot: '/images/habitica/screenshot-3.jpg',
+        title: 'See your progress add up',
+        description: 'The Stats screen counts your total check-ins across all your habits.',
+        screenshot: '/images/habitica/screen-stats-light.png',
+        alt: 'Habitica Habits stats — total completions and monthly calendar',
       },
       {
         step: 4,
-        title: 'Review Your Progress',
-        description: 'See your completion calendar, streaks, and progress over time',
-        screenshot: '/images/habitica/screenshot-4.jpg',
+        title: 'Spot your best habits',
+        description: 'A weekly chart shows your busiest days, and your top habits are ranked by streak.',
+        screenshot: '/images/habitica/screen-stats-weekly.png',
+        alt: 'Habitica Habits weekly activity and top performers',
       },
+    ],
+    screenshots: habiticaShowcase.screenshots,
+    videoPoster: [
+      '/images/habitica/screen-calendar-light.png',
+      '/images/habitica/screen-dashboard-light.png',
+      '/images/habitica/screen-stats-weekly.png',
     ],
     faq: [
       {
@@ -266,28 +290,38 @@ export const appPages = {
     howItWorks: [
       {
         step: 1,
-        title: 'Describe Your Content',
-        description: 'Tell CapGen what your post is about in a few words',
-        screenshot: '/images/capgen/screenshot-1.jpg',
+        title: 'Say what your post is about',
+        description: 'Type a few words about your post, like a product launch or a weekend reel.',
+        screenshot: '/images/capgen/screen-home.png',
+        alt: 'CapGen home — enter your topic',
       },
       {
         step: 2,
-        title: 'Choose Platform & Tone',
-        description: 'Select Instagram, TikTok, LinkedIn, or X, and pick a tone',
-        screenshot: '/images/capgen/screenshot-2.jpg',
+        title: 'Pick platform, tone and language',
+        description: 'Choose Instagram, TikTok, LinkedIn or X, then the tone and language you want.',
+        screenshot: '/images/capgen/screen-style.png',
+        alt: 'CapGen style picker — platform, tone, and language',
       },
       {
         step: 3,
-        title: 'Get AI Captions',
-        description: 'CapGen generates multiple caption options instantly',
-        screenshot: '/images/capgen/screenshot-3.jpg',
+        title: 'Get caption ideas',
+        description: 'CapGen writes caption ideas with matching hashtags in seconds.',
+        screenshot: '/images/capgen/screen-captions.png',
+        alt: 'CapGen generated captions with hashtags',
       },
       {
         step: 4,
-        title: 'Copy & Post',
-        description: 'Tap to copy your favorite caption and paste it into your post',
-        screenshot: '/images/capgen/screenshot-4.jpg',
+        title: 'Unlock, copy and post',
+        description: 'Choose a Premium pass to unlock copying, then paste your favourite caption into your post.',
+        screenshot: '/images/capgen/screen-premium.png',
+        alt: 'CapGen Premium plans',
       },
+    ],
+    screenshots: capgenShowcase.screenshots,
+    videoPoster: [
+      '/images/capgen/screen-home.png',
+      '/images/capgen/screen-splash.png',
+      '/images/capgen/screen-captions.png',
     ],
     faq: [
       {
