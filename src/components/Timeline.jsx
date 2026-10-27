@@ -5,13 +5,13 @@ export default function Timeline({ project }) {
   const currentIndex = completedCount;
 
   return (
-    <div className="gradient-border rounded-2xl glass p-6 lg:p-8">
+    <div className="card p-6 lg:p-8">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-white">{project.name}</h3>
-          <p className="mt-1 text-sm text-white/50">
+          <h3 className="text-lg font-semibold text-ink">{project.name}</h3>
+          <p className="mt-1 text-sm text-muted">
             Estimated launch:{' '}
-            <span className="text-accent-cyan/90">{project.estimatedLaunch}</span>
+            <span className="text-gold font-semibold">{project.estimatedLaunch}</span>
           </p>
         </div>
         <div className="w-full sm:max-w-xs">
@@ -21,11 +21,11 @@ export default function Timeline({ project }) {
 
       <div className="relative">
         <div
-          className="absolute left-0 right-0 top-5 hidden h-0.5 bg-white/10 sm:block"
+          className="absolute left-0 right-0 top-5 hidden h-0.5 bg-card-border sm:block"
           aria-hidden
         />
         <div
-          className="absolute left-0 top-5 hidden h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple sm:block"
+          className="absolute left-0 top-5 hidden h-0.5 bg-ink sm:block"
           style={{
             width: `${((completedCount) / (project.milestones.length - 1)) * 100}%`,
           }}
@@ -42,10 +42,10 @@ export default function Timeline({ project }) {
                 <div
                   className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all ${
                     isPast
-                      ? 'border-accent-blue bg-gradient-to-br from-accent-blue to-accent-purple text-white shadow-glow'
+                      ? 'border-gold bg-gold text-white shadow-md'
                       : isActive
-                        ? 'border-accent-purple bg-accent-purple/20 text-accent-purple animate-pulse-glow'
-                        : 'border-white/20 bg-surface-elevated text-white/30'
+                        ? 'border-gold bg-gold/20 text-gold animate-pulse'
+                        : 'border-card-border bg-card text-muted/30'
                   }`}
                 >
                   {isPast ? (
@@ -58,12 +58,12 @@ export default function Timeline({ project }) {
                 </div>
                 <p
                   className={`mt-3 text-sm font-medium ${
-                    isPast ? 'text-white' : isActive ? 'text-accent-purple' : 'text-white/40'
+                    isPast ? 'text-ink' : isActive ? 'text-gold' : 'text-muted/60'
                   }`}
                 >
                   {milestone.name}
                 </p>
-                <p className="mt-0.5 text-xs text-white/40">{milestone.date}</p>
+                <p className="mt-0.5 text-xs text-muted/60">{milestone.date}</p>
               </li>
             );
           })}

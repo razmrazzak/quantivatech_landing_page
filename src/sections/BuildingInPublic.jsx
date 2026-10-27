@@ -4,7 +4,7 @@ import SectionHeading from '../components/SectionHeading';
 
 export default function BuildingInPublic() {
   return (
-    <section id="building-in-public" className="section-padding scroll-mt-20 bg-surface-elevated/50">
+    <section id="building-in-public" className="section-padding scroll-mt-20 bg-ivory-alt">
       <div className="container-narrow mx-auto">
         <SectionHeading
           badge="Transparency"

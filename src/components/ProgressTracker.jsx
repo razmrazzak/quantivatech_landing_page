@@ -9,20 +9,20 @@ const statusColors = {
 
 export function StatusBadge({ status }) {
   const styles = {
-    Planning: 'bg-white/10 text-white/60',
-    Design: 'bg-violet-500/20 text-violet-300',
-    Development: 'bg-blue-500/20 text-blue-300',
-    'Beta Testing': 'bg-amber-500/20 text-amber-300',
-    'Launching Soon': 'bg-emerald-500/20 text-emerald-300',
-    Live: 'bg-green-500/20 text-green-300 ring-1 ring-green-500/30',
+    Planning: 'bg-muted/10 text-muted',
+    Design: 'bg-violet-100 text-violet-700',
+    Development: 'bg-blue-100 text-blue-700',
+    'Beta Testing': 'bg-amber-100 text-amber-700',
+    'Launching Soon': 'bg-gold/20 text-gold ring-1 ring-gold/30',
+    Live: 'bg-green-100 text-green-700 ring-1 ring-green-200',
   };
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[status] || styles.Planning}`}
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${styles[status] || styles.Planning}`}
     >
       {status === 'Live' && (
-        <span className="mr-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
+        <span className="mr-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
       )}
       {status}
     </span>
@@ -37,13 +37,13 @@ export default function ProgressTracker({ progress, showLabel = true, size = 'md
     <div className="w-full">
       {showLabel && (
         <div className="mb-1.5 flex justify-between text-xs">
-          <span className="text-white/50">Progress</span>
-          <span className="font-medium text-white/80">{clamped}%</span>
+          <span className="text-muted">Progress</span>
+          <span className="font-semibold text-ink">{clamped}%</span>
         </div>
       )}
-      <div className={`overflow-hidden rounded-full bg-white/10 ${height}`}>
+      <div className={`overflow-hidden rounded-full bg-card-border ${height}`}>
         <div
-          className={`h-full rounded-full bg-gradient-to-r from-accent-blue to-accent-purple transition-all duration-700 ease-out`}
+          className={`h-full rounded-full bg-ink transition-all duration-700 ease-out`}
           style={{ width: `${clamped}%` }}
           role="progressbar"
           aria-valuenow={clamped}

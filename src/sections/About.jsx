@@ -54,7 +54,7 @@ const expertise = [
 
 export default function About() {
   return (
-    <section id="about" className="section-padding scroll-mt-20 bg-surface-elevated/50">
+    <section id="about" className="section-padding scroll-mt-20 bg-ivory-alt">
       <div className="container-narrow mx-auto">
         <SectionHeading
           badge="Brand"
@@ -63,16 +63,16 @@ export default function About() {
           subtitle="Independent software products published under a personal tech brand."
         />
 
-        <div className="mb-12 rounded-2xl glass-strong p-8 lg:p-10">
-          <p className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/50">
+        <div className="mb-12 card p-8 lg:p-10">
+          <p className="rounded-lg border border-card-border bg-gold/5 px-4 py-3 text-sm text-muted">
             {brand.legalNotice}
           </p>
-          <p className="mt-6 text-lg leading-relaxed text-white/70">
-            <span className="font-semibold text-white">{brand.name}</span> is the brand{' '}
-            <span className="font-semibold text-white">{brand.developerName}</span> uses to publish
+          <p className="mt-6 text-lg leading-relaxed text-muted">
+            <span className="font-semibold text-ink">{brand.name}</span> is the brand{' '}
+            <span className="font-semibold text-ink">{brand.developerName}</span> uses to publish
             mobile apps, SaaS tools, and AI-powered software as an independent developer.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-white/70">
+          <p className="mt-4 text-lg leading-relaxed text-muted">
             From idea to App Store, I design, build, and ship products for clients on Upwork, direct
             collaborations, and my own portfolio — combining modern engineering with thoughtful product
             design.
@@ -83,15 +83,15 @@ export default function About() {
           {expertise.map((item) => (
             <div
               key={item.title}
-              className="gradient-border group rounded-2xl glass p-6 transition-all hover:bg-white/[0.05]"
+              className="card group p-6 transition-all hover:shadow-xl"
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 text-accent-blue">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gold/10 text-gold">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   {item.icon}
                 </svg>
               </div>
-              <h3 className="mb-2 font-semibold text-white">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-white/60">{item.description}</p>
+              <h3 className="mb-2 font-semibold text-ink">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-muted">{item.description}</p>
             </div>
           ))}
         </div>
