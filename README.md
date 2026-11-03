@@ -87,6 +87,10 @@ If `youtubeId` is empty or missing, a placeholder will be shown instead.
 | `/apps/capgen/terms` | CapGen terms |
 | `/apps/habitica/privacy` | HabitZen: Habit Tracker privacy |
 | `/apps/habitica/terms` | HabitZen: Habit Tracker terms |
+| `/apps/mealmira` | MealMira app detail (workflow screens) |
+| `/apps/mealmira/privacy` | MealMira privacy |
+| `/apps/mealmira/terms` | MealMira terms |
+| `/apps/mealmira/delete-account` | MealMira account deletion (separate Firebase) |
 | `/apps/expense/privacy` | Expense - AI Tracker privacy |
 | `/apps/expense/terms` | Expense - AI Tracker terms |
 | `/apps/expense/delete-account` | Expense account deletion (Google Play) |

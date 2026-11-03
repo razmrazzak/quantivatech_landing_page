@@ -8,6 +8,13 @@ import {
 } from './legal/expenseLegal';
 import { expensePrivacyDeSections } from './legal/expensePrivacyDe';
 import { expenseTermsDeSections } from './legal/expenseTermsDe';
+import {
+  MEALMIRA_APP_NAME,
+  mealmiraPrivacySections,
+  mealmiraTermsSections,
+} from './legal/mealmiraLegal';
+import { mealmiraPrivacyDeSections } from './legal/mealmiraPrivacyDe';
+import { mealmiraTermsDeSections } from './legal/mealmiraTermsDe';
 
 const { name: brandName, developerName, legalNotice, websiteContactEmail } = brand;
 
@@ -201,6 +208,38 @@ export const legalApps = {
       effectiveDate: '18. September 2026',
       lastUpdated: '18. September 2026',
       sections: expenseTermsDeSections,
+    },
+  },
+  mealmira: {
+    id: 'mealmira',
+    name: MEALMIRA_APP_NAME,
+    tagline: 'Snap meals. Feel good.',
+    appIcon: '/images/mealmira/app-icon.png',
+    contactEmail: websiteContactEmail,
+    lastUpdated: '2026-11-03',
+    privacy: {
+      externalUrl: null,
+      effectiveDate: '3 November 2026',
+      lastUpdated: '3 November 2026',
+      sections: mealmiraPrivacySections,
+    },
+    privacyDe: {
+      externalUrl: null,
+      effectiveDate: '3. November 2026',
+      lastUpdated: '3. November 2026',
+      sections: mealmiraPrivacyDeSections,
+    },
+    terms: {
+      externalUrl: null,
+      effectiveDate: '3 November 2026',
+      lastUpdated: '3 November 2026',
+      sections: mealmiraTermsSections,
+    },
+    termsDe: {
+      externalUrl: null,
+      effectiveDate: '3. November 2026',
+      lastUpdated: '3. November 2026',
+      sections: mealmiraTermsDeSections,
     },
   },
 };

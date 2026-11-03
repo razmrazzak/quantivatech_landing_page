@@ -21,10 +21,13 @@ if (!existsSync(indexHtml)) {
 const routes = [
   '/privacy',
   '/terms',
+  '/apps/habitica',
   '/apps/habitica/privacy',
   '/apps/habitica/terms',
+  '/apps/capgen',
   '/apps/capgen/privacy',
   '/apps/capgen/terms',
+  '/apps/expense',
   '/apps/expense/privacy',
   '/apps/expense/privacy/de',
   '/apps/expense/datenschutz',
@@ -34,6 +37,12 @@ const routes = [
   '/apps/expense/delete-account',
   '/apps/expense/delete-account/de',
   '/apps/expense/konto-loeschen',
+  '/apps/mealmira',
+  '/apps/mealmira/privacy',
+  '/apps/mealmira/terms',
+  '/apps/mealmira/delete-account',
+  '/apps/mealmira/delete-account/de',
+  '/apps/mealmira/konto-loeschen',
 ];
 
 for (const route of routes) {

@@ -40,6 +40,11 @@
 
   .gradient-text {
     @apply bg-gold-gradient bg-clip-text font-display italic text-transparent;
+    /* Italic glyphs overhang the box; bg-clip-text otherwise chops the last letter */
+    padding-inline: 0.05em 0.18em;
+    margin-inline: -0.05em -0.18em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
   .card {

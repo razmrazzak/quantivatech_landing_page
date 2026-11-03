@@ -68,7 +68,7 @@ export const habiticaShowcase = {
     },
   ],
   iosUrl: APP_STORE_URL,
-  androidUrl: '',
+  androidUrl: 'https://play.google.com/store/apps/details?id=com.razmy.habitica.android',
   websiteUrl: '',
   floatingScreenshots: [0, 3, 5],
 };

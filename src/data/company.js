@@ -19,14 +19,27 @@ export const buildingInPublic = [
   {
     id: 4,
     name: 'Expense - AI Tracker',
-    estimatedLaunch: 'Q4 2026',
-    progress: 95,
+    estimatedLaunch: 'Live on iOS & Android',
+    progress: 100,
     milestones: [
       { name: 'Idea', completed: true, date: 'Mar 2026' },
       { name: 'Design', completed: true, date: 'May 2026' },
       { name: 'Development', completed: true, date: 'Aug 2026' },
       { name: 'Testing', completed: true, date: 'Sep 2026' },
-      { name: 'Launch', completed: false, date: 'Oct 2026' },
+      { name: 'Launch', completed: true, date: 'Nov 2026' },
+    ],
+  },
+  {
+    id: 0,
+    name: 'MealMira',
+    estimatedLaunch: 'Q1 2027',
+    progress: 85,
+    milestones: [
+      { name: 'Idea', completed: true, date: 'Sep 2026' },
+      { name: 'Design', completed: true, date: 'Nov 2026' },
+      { name: 'Development', completed: false, date: 'Dec 2026' },
+      { name: 'Testing', completed: false, date: 'Feb 2027' },
+      { name: 'Launch', completed: false, date: 'Mar 2027' },
     ],
   },
   {
@@ -91,9 +104,10 @@ export const contact = {
 
 export const navLinks = [
   { label: 'Products', href: '/#products' },
-  { label: 'Expense', href: '/#expense' },
-  { label: 'HabitZen', href: '/#habitica' },
-  { label: 'CapGen', href: '/#capgen' },
+  { label: 'MealMira', href: '/apps/mealmira' },
+  { label: 'Expense', href: '/apps/expense' },
+  { label: 'HabitZen', href: '/apps/habitica' },
+  { label: 'CapGen', href: '/apps/capgen' },
   { label: 'Roadmap', href: '/#building-in-public' },
   { label: 'Stack', href: '/#tech-stack' },
   { label: 'About', href: '/#about' },
@@ -102,9 +116,10 @@ export const navLinks = [
 /** Full labels for mobile menu */
 export const mobileNavLinks = [
   { label: 'Products', href: '/#products' },
-  { label: 'Expense - AI Tracker', href: '/#expense' },
-  { label: 'HabitZen: Habit Tracker', href: '/#habitica' },
-  { label: 'CapGen', href: '/#capgen' },
+  { label: 'MealMira', href: '/apps/mealmira' },
+  { label: 'Expense - AI Tracker', href: '/apps/expense' },
+  { label: 'HabitZen: Habit Tracker', href: '/apps/habitica' },
+  { label: 'CapGen', href: '/apps/capgen' },
   { label: 'Building in Public', href: '/#building-in-public' },
   { label: 'Tech Stack', href: '/#tech-stack' },
   { label: 'About', href: '/#about' },

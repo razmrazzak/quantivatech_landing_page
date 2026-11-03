@@ -34,14 +34,30 @@ const platformIcons = {
   ),
 };
 
+function hasRealUrl(url) {
+  return Boolean(url && url !== '#');
+}
+
 export default function ProductCard({ product }) {
   const formattedDate = new Date(product.lastUpdated).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
   });
-  
-  const slug = product.showcaseId || product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  const slug =
+    product.showcaseId ||
+    product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  const hasIosStore = hasRealUrl(product.iosUrl);
+  const hasAndroidStore = hasRealUrl(product.androidUrl);
+
+  // Avoid duplicating iOS/Android: chips when no store link, store buttons when linked
+  const platformChips = (product.platforms || []).filter((platform) => {
+    if (platform === 'iOS' && hasIosStore) return false;
+    if (platform === 'Android' && hasAndroidStore) return false;
+    return true;
+  });
 
   return (
     <article className="card group flex flex-col p-6 transition-all duration-300 hover:shadow-xl">
@@ -79,17 +95,19 @@ export default function ProductCard({ product }) {
         <ProgressTracker progress={product.progress} />
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-1.5">
-        {product.platforms.map((platform) => (
-          <span
-            key={platform}
-            className="inline-flex items-center gap-1 rounded-md bg-ivory-alt px-2 py-1 text-xs text-muted"
-          >
-            {platformIcons[platform]}
-            {platform}
-          </span>
-        ))}
-      </div>
+      {platformChips.length > 0 && (
+        <div className="mb-4 flex flex-wrap gap-1.5">
+          {platformChips.map((platform) => (
+            <span
+              key={platform}
+              className="inline-flex items-center gap-1 rounded-md bg-ivory-alt px-2 py-1 text-xs text-muted"
+            >
+              {platformIcons[platform]}
+              {platform}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="mb-4 flex flex-wrap gap-2">
         {product.showcaseId && (
@@ -102,7 +120,12 @@ export default function ProductCard({ product }) {
             }`}
           >
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
             </svg>
             Learn More
           </Link>

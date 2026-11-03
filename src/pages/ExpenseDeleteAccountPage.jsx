@@ -25,9 +25,10 @@ const COPY = {
     notConfigured: (
       <>
         This page is not configured yet. Set{' '}
-        <code className="text-amber-100">VITE_EXPENSE_API_BASE_URL</code> and{' '}
-        <code className="text-amber-100">VITE_EXPENSE_FIREBASE_*</code> in your environment
-        (see <code className="text-amber-100">.env.example</code>), then rebuild.
+        <code className="rounded bg-ivory-alt px-1 text-ink">VITE_EXPENSE_API_BASE_URL</code> and{' '}
+        <code className="rounded bg-ivory-alt px-1 text-ink">VITE_EXPENSE_FIREBASE_*</code> in your
+        environment (see <code className="rounded bg-ivory-alt px-1 text-ink">.env.example</code>),
+        then rebuild.
       </>
     ),
     deletedTitle: 'Account deleted',
@@ -68,9 +69,10 @@ const COPY = {
     notConfigured: (
       <>
         Diese Seite ist noch nicht konfiguriert. Setzen Sie{' '}
-        <code className="text-amber-100">VITE_EXPENSE_API_BASE_URL</code> und{' '}
-        <code className="text-amber-100">VITE_EXPENSE_FIREBASE_*</code> in Ihrer Umgebung
-        (siehe <code className="text-amber-100">.env.example</code>) und bauen Sie neu.
+        <code className="rounded bg-ivory-alt px-1 text-ink">VITE_EXPENSE_API_BASE_URL</code> und{' '}
+        <code className="rounded bg-ivory-alt px-1 text-ink">VITE_EXPENSE_FIREBASE_*</code> in Ihrer
+        Umgebung (siehe <code className="rounded bg-ivory-alt px-1 text-ink">.env.example</code>) und
+        bauen Sie neu.
       </>
     ),
     deletedTitle: 'Konto gelöscht',
@@ -193,8 +195,8 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
     <LegalLayout>
       <article className="container-narrow mx-auto max-w-lg px-4 py-12 sm:px-6 lg:py-16">
         <Link
-          to="/#expense"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          to="/apps/expense"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -202,20 +204,20 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
           {t.back} {appName}
         </Link>
 
-        <header className="mb-8 flex items-start gap-4 border-b border-white/10 pb-8">
+        <header className="mb-8 flex items-start gap-4 border-b border-card-border pb-8">
           <img
             src="/images/expense/app-icon.jpg"
             alt=""
-            className="h-14 w-14 rounded-xl ring-1 ring-white/10"
+            className="h-14 w-14 rounded-xl ring-1 ring-card-border"
             width={56}
             height={56}
           />
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-accent-cyan">
-              {appName}
-            </p>
-            <h1 className="mt-1 text-3xl font-bold tracking-tight text-white">{t.title}</h1>
-            <p className="mt-2 text-sm text-white/50">{t.subtitle}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-gold">{appName}</p>
+            <h1 className="mt-1 font-display text-3xl font-bold tracking-tight text-ink">
+              {t.title}
+            </h1>
+            <p className="mt-2 text-sm text-muted">{t.subtitle}</p>
           </div>
         </header>
 
@@ -224,8 +226,8 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
             to="/apps/expense/delete-account"
             className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
               !isGerman
-                ? 'bg-white/15 text-white'
-                : 'text-white/50 hover:bg-white/10 hover:text-white'
+                ? 'bg-ink text-white'
+                : 'text-muted hover:bg-ivory-alt hover:text-ink'
             }`}
           >
             English
@@ -234,8 +236,8 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
             to="/apps/expense/konto-loeschen"
             className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
               isGerman
-                ? 'bg-white/15 text-white'
-                : 'text-white/50 hover:bg-white/10 hover:text-white'
+                ? 'bg-ink text-white'
+                : 'text-muted hover:bg-ivory-alt hover:text-ink'
             }`}
           >
             Deutsch
@@ -243,18 +245,18 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
         </div>
 
         {!configured && (
-          <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+          <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
             {t.notConfigured}
           </div>
         )}
 
         {configured && done && (
-          <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center">
-            <p className="text-lg font-semibold text-emerald-300">{t.deletedTitle}</p>
-            <p className="mt-2 text-sm text-white/60">{t.deletedBody(appName)}</p>
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
+            <p className="text-lg font-semibold text-emerald-800">{t.deletedTitle}</p>
+            <p className="mt-2 text-sm text-emerald-900/70">{t.deletedBody(appName)}</p>
             <Link
               to="/"
-              className="mt-6 inline-flex rounded-xl bg-white/10 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/15"
+              className="mt-6 inline-flex rounded-xl bg-ink px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
             >
               {t.returnHome}
             </Link>
@@ -263,9 +265,9 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
 
         {configured && !done && (
           <>
-            <div className="mb-6 rounded-xl border border-red-500/25 bg-red-500/10 p-4 text-sm text-red-200/90">
-              <p className="font-semibold text-red-200">{t.warningTitle}</p>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-red-200/80">
+            <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+              <p className="font-semibold">{t.warningTitle}</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-red-900/80">
                 {t.warnings.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -273,12 +275,12 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
             </div>
 
             {!authReady ? (
-              <p className="text-sm text-white/50">{t.loading}</p>
+              <p className="text-sm text-muted">{t.loading}</p>
             ) : !user ? (
-              <form onSubmit={handleLogin} className="space-y-4 rounded-2xl glass-strong p-6">
-                <p className="text-sm text-white/60">{t.signInHint(appName)}</p>
+              <form onSubmit={handleLogin} className="card space-y-4 p-6">
+                <p className="text-sm text-muted">{t.signInHint(appName)}</p>
                 <label className="block">
-                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted">
                     {t.email}
                   </span>
                   <input
@@ -287,11 +289,11 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-accent-cyan/50"
+                    className="w-full rounded-xl border border-card-border bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted">
                     {t.password}
                   </span>
                   <input
@@ -300,45 +302,45 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-accent-cyan/50"
+                    className="w-full rounded-xl border border-card-border bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
                   />
                 </label>
                 <button
                   type="submit"
                   disabled={busy}
-                  className="w-full rounded-xl bg-gradient-to-r from-accent-blue to-accent-cyan px-4 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                  className="w-full rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white disabled:opacity-50"
                 >
                   {busy ? t.signingIn : t.signIn}
                 </button>
               </form>
             ) : (
-              <div className="space-y-5 rounded-2xl glass-strong p-6">
+              <div className="card space-y-5 p-6">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-white/40">{t.signedInAs}</p>
-                    <p className="mt-1 text-sm font-medium text-white">{user.email}</p>
+                    <p className="text-xs uppercase tracking-wider text-muted">{t.signedInAs}</p>
+                    <p className="mt-1 text-sm font-medium text-ink">{user.email}</p>
                   </div>
                   <button
                     type="button"
                     onClick={handleLogout}
-                    className="text-xs text-white/50 hover:text-white"
+                    className="text-xs text-muted hover:text-ink"
                   >
                     {t.signOut}
                   </button>
                 </div>
 
-                <label className="flex items-start gap-3 text-sm text-white/70">
+                <label className="flex items-start gap-3 text-sm text-muted">
                   <input
                     type="checkbox"
                     checked={acknowledged}
                     onChange={(e) => setAcknowledged(e.target.checked)}
                     className="mt-1"
                   />
-                  <span>{t.acknowledge}</span>
+                  <span className="text-ink/80">{t.acknowledge}</span>
                 </label>
 
                 <label className="block">
-                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/40">
+                  <span className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted">
                     {t.typeConfirm}
                   </span>
                   <input
@@ -346,7 +348,7 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
                     value={confirmText}
                     onChange={(e) => setConfirmText(e.target.value)}
                     placeholder={CONFIRM_WORD}
-                    className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none focus:border-red-500/50"
+                    className="w-full rounded-xl border border-card-border bg-white px-4 py-3 text-sm text-ink outline-none focus:border-red-400"
                   />
                 </label>
 
@@ -364,14 +366,14 @@ export default function ExpenseDeleteAccountPage({ lang = 'en' }) {
         )}
 
         {error && (
-          <p className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900">
             {error}
           </p>
         )}
 
-        <p className="mt-8 text-center text-xs text-white/40">
+        <p className="mt-8 text-center text-xs text-muted">
           {t.needHelp}{' '}
-          <a href="mailto:razmyrazzak@outlook.com" className="text-accent-cyan hover:underline">
+          <a href="mailto:razmyrazzak@outlook.com" className="text-gold hover:underline">
             razmyrazzak@outlook.com
           </a>
         </p>

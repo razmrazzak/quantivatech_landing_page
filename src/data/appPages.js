@@ -2,8 +2,176 @@
 import { expenseShowcase } from './expenseShowcase';
 import { habiticaShowcase } from './habiticaShowcase';
 import { capgenShowcase } from './capgenShowcase';
+import { mealmiraShowcase } from './mealmiraShowcase';
 
 export const appPages = {
+  mealmira: {
+    id: 'mealmira',
+    slug: 'mealmira',
+    name: 'MealMira',
+    tagline: 'Snap meals. Feel good.',
+    description:
+      'Pick a goal, snap your plate, and see your day clearly — calories, protein, and gentle progress without the guilt. Built for everyday eating, including optional GLP-1 mode.',
+    appIcon: '/images/mealmira/app-icon.png',
+    youtubeId: '',
+    appStoreUrl: '',
+    playStoreUrl: '',
+    keywords: [
+      'meal logging app',
+      'food diary',
+      'snap meal calories',
+      'protein tracker',
+      'GLP-1 meal app',
+      'gentle nutrition',
+      'meal photo log',
+      'daily food plan',
+      'good days habit',
+      'eat out invite',
+      'restaurant RSVP',
+      'MealMira',
+    ],
+    features: [
+      {
+        icon: '🎯',
+        title: 'Goal that fits you',
+        description: 'Lose weight, stay steady, build muscle, or eat well on a GLP-1 medication',
+      },
+      {
+        icon: '📷',
+        title: 'Snap your plate',
+        description: 'Photograph a meal and review calories and protein before you save',
+      },
+      {
+        icon: '📅',
+        title: 'Today at a glance',
+        description: 'Breakfast to dinner with protein progress in one calm view',
+      },
+      {
+        icon: '📓',
+        title: 'Food diary',
+        description: 'Note when, where, and how hungry or full you felt — not just calories',
+      },
+      {
+        icon: '💛',
+        title: 'Good days',
+        description: 'Progress as golden rings — good days, not perfect days',
+      },
+      {
+        icon: '💊',
+        title: 'GLP-1 mode',
+        description: 'Protein-first support alongside your doctor’s advice',
+      },
+      {
+        icon: '🍽️',
+        title: 'Eat-out invites',
+        description: 'Restaurant invites with map, guests, and RSVP',
+      },
+    ],
+    howItWorks: [
+      {
+        step: 1,
+        title: 'Pick your goal',
+        description:
+          'Getting started takes a minute. Choose what matters: losing weight, staying steady, building muscle, or eating well on a GLP-1 medication.',
+        screenshot: '/images/mealmira/01-onboarding-goal.png',
+        alt: 'MealMira onboarding — pick your goal',
+      },
+      {
+        step: 2,
+        title: 'Get your daily plan',
+        description:
+          'In a few taps you get calories, protein, carbs, fat and fiber worked out for you — then your food diary begins.',
+        screenshot: '/images/mealmira/02-onboarding-plan.png',
+        alt: 'MealMira daily plan with macros',
+      },
+      {
+        step: 3,
+        title: 'Snap your plate',
+        description:
+          'Point the camera at your meal and tap. Review what’s on the plate, edit if needed, then save it to your day.',
+        screenshot: '/images/mealmira/03-camera-snap.png',
+        alt: 'MealMira camera snap',
+      },
+      {
+        step: 4,
+        title: 'See your day',
+        description:
+          'Your day at a glance — what you’ve eaten, protein progress, and what’s left. Breakfast through dinner in one place.',
+        screenshot: '/images/mealmira/05-today.png',
+        alt: 'MealMira today view',
+      },
+      {
+        step: 5,
+        title: 'Notice how you feel',
+        description:
+          'Your food diary captures when you ate, where you were, and how hungry or full you felt. Not about being perfect — about noticing what feels good.',
+        screenshot: '/images/mealmira/06-food-diary.png',
+        alt: 'MealMira food diary',
+      },
+      {
+        step: 6,
+        title: 'Good days, not perfect days',
+        description:
+          'A good day means a couple of meals and getting close to your protein goal. Watch golden rings fill the month — no red marks, no guilt.',
+        screenshot: '/images/mealmira/08-progress.png',
+        alt: 'MealMira progress calendar',
+      },
+      {
+        step: 7,
+        title: 'GLP-1 mode: protein first',
+        description:
+          'On a GLP-1 medication, every bite counts. GLP-1 mode puts protein first, suggests protein-rich meals, and lets you log injections and how you feel — gentle support alongside your doctor’s advice.',
+        screenshot: '/images/mealmira/10-glp1.png',
+        alt: 'MealMira GLP-1 mode — protein first, injection log, and how you feel',
+      },
+      {
+        step: 8,
+        title: 'Eat out with an invite',
+        description:
+          'When friends invite you out, open the guest invite to see the place, time, map, and who’s going — then RSVP without leaving the app.',
+        screenshot: '/images/mealmira/15-eatout-invite-rsvp.png',
+        alt: 'MealMira eat-out invitation — venue, map, and who’s going',
+      },
+    ],
+    screenshots: mealmiraShowcase.screenshots,
+    videoPoster: [
+      '/images/mealmira/01-onboarding-goal.png',
+      '/images/mealmira/04-snap-result.png',
+      '/images/mealmira/05-today.png',
+    ],
+    faq: [
+      {
+        question: 'Is MealMira a medical or diet app?',
+        answer:
+          'No. MealMira is a meal logging and organization tool. It does not provide medical advice. If you use GLP-1 mode, follow your doctor’s guidance.',
+      },
+      {
+        question: 'What is GLP-1 mode?',
+        answer:
+          'An optional mode that focuses on protein, suggests protein-rich meals you already like, and lets you note injections and how you feel. It is for self-tracking only — not medical advice.',
+      },
+      {
+        question: 'What are eat-out invites?',
+        answer:
+          'Friends can share a restaurant invite with the venue, time, map, and guest list. You can see who’s going and respond to the RSVP in MealMira.',
+      },
+      {
+        question: 'How does snapping a meal work?',
+        answer:
+          'You photograph your plate, review the suggested items and macros, edit anything that looks off, then save the meal to your day.',
+      },
+      {
+        question: 'What is a “good day”?',
+        answer:
+          'A good day simply means logging a couple of meals and getting close to your protein goal — progress without perfection pressure.',
+      },
+      {
+        question: 'Can I delete my account and data?',
+        answer:
+          'Yes. You can delete your account in the app or on our web deletion page. MealMira uses its own Firebase project, separate from our other apps.',
+      },
+    ],
+  },
   expense: {
     id: 'expense',
     slug: 'expense',
@@ -12,8 +180,8 @@ export const appPages = {
     description: 'Scan receipts with AI, track expenses & income, and export reports as PDF or CSV. Perfect for freelancers, small businesses, and personal finance.',
     appIcon: '/images/expense/app-icon.jpg',
     youtubeId: '', // TODO: Add YouTube video ID
-    appStoreUrl: '',
-    playStoreUrl: '',
+    appStoreUrl: 'https://apps.apple.com/us/app/expense-ai-tracker/id6809154830',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.razmy.expenceaitracker.android',
     keywords: [
       'AI expense tracker',
       'receipt scanner app',
@@ -127,13 +295,13 @@ export const appPages = {
   habitica: {
     id: 'habitica',
     slug: 'habitica',
-    name: 'Habitica Habits',
+    name: 'HabitZen: Habit Tracker',
     tagline: 'Private habit & streak tracker',
     description: 'Track habits, build streaks, and reach your goals. All data stays private on your device. No accounts, no social features, just you and your progress.',
     appIcon: '/images/habitica/app-icon.png',
     youtubeId: '', // TODO: Add YouTube video ID
     appStoreUrl: 'https://apps.apple.com/us/app/habitica-habits/id6774765632',
-    playStoreUrl: '',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.razmy.habitica.android',
     keywords: [
       'habit tracker iOS',
       'streak tracker',

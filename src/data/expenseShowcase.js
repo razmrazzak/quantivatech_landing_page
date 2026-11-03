@@ -4,10 +4,10 @@ export const expenseShowcase = {
   id: 'expense',
   name: 'Expense - AI Tracker',
   tagline: 'AI Expense & Income Tracking',
-  status: 'Launching Soon',
-  progress: 95,
+  status: 'Live',
+  progress: 100,
   theme: 'cyan',
-  badge: 'Latest Project',
+  badge: 'Live on App Store & Google Play',
   description:
     'Scan receipts, invoices, and bank statements — AI extracts merchant, date, amount, and more. Track personal and business finances, then export PDF or CSV when you need it.',
   features: [
@@ -89,8 +89,8 @@ export const expenseShowcase = {
       theme: 'light',
     },
   ],
-  iosUrl: '',
-  androidUrl: '',
+  iosUrl: 'https://apps.apple.com/us/app/expense-ai-tracker/id6809154830',
+  androidUrl: 'https://play.google.com/store/apps/details?id=com.razmy.expenceaitracker.android',
   websiteUrl: '',
   floatingScreenshots: [0, 3, 5],
 };
