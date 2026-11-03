@@ -6,19 +6,19 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-surface">
+    <footer className="border-t border-card-border bg-ivory">
       <div className="container-narrow mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple text-sm font-bold">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-white">
                 Q
               </span>
-              <span className="text-lg font-semibold">
-                Quantiva<span className="text-white/60"> Tech</span>
+              <span className="font-display text-xl font-semibold text-ink">
+                Quantiva<span className="text-muted"> Tech</span>
               </span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm text-white/50">
+            <p className="mt-3 max-w-sm text-sm text-muted leading-relaxed">
               Personal brand by {brand.developerName} — independent developer, not a registered
               company.
             </p>
@@ -31,7 +31,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-sm text-white/60 transition-colors hover:text-white"
+                      className="text-sm text-muted transition-colors hover:text-ink"
                     >
                       {link.label}
                     </Link>
@@ -42,19 +42,19 @@ export default function Footer() {
 
             {footerLegalApps.length > 0 && (
               <nav aria-label="App legal">
-                <p className="mb-2 text-xs font-medium uppercase tracking-wider text-white/40">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gold">
                   App legal
                 </p>
                 <ul className="space-y-2">
                   {footerLegalApps.map((app) => (
-                    <li key={app.id} className="text-sm text-white/50">
-                      <span className="font-medium text-white/70">{app.name}</span>
-                      <span className="mx-1.5 text-white/20">·</span>
-                      <Link to={app.privacyHref} className="hover:text-white">
+                    <li key={app.id} className="text-sm text-muted">
+                      <span className="font-medium text-ink">{app.name}</span>
+                      <span className="mx-1.5 text-card-border">·</span>
+                      <Link to={app.privacyHref} className="hover:text-ink">
                         Privacy
                       </Link>
-                      <span className="mx-1 text-white/20">/</span>
-                      <Link to={app.termsHref} className="hover:text-white">
+                      <span className="mx-1 text-card-border">/</span>
+                      <Link to={app.termsHref} className="hover:text-ink">
                         Terms
                       </Link>
                     </li>
@@ -65,11 +65,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/40">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-card-border pt-8 sm:flex-row">
+          <p className="text-sm text-muted">
             © {year} {brand.developerName} · {brand.name} brand
           </p>
-          <p className="text-xs text-white/30">Crafted with React & Tailwind CSS</p>
+          <p className="text-xs text-muted/70">Crafted with React & Tailwind CSS</p>
         </div>
       </div>
     </footer>

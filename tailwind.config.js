@@ -4,11 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        surface: {
-          DEFAULT: '#0a0a0f',
-          elevated: '#12121a',
-          card: 'rgba(255, 255, 255, 0.03)',
+        ivory: {
+          DEFAULT: '#faf7f2',
+          alt: '#f3ede3',
         },
+        card: {
+          DEFAULT: '#fffdf9',
+          border: '#e8dfd0',
+        },
+        ink: '#14213d',
+        muted: '#6b6a66',
+        gold: '#b08d57',
         accent: {
           blue: '#3b82f6',
           purple: '#8b5cf6',
@@ -17,19 +23,20 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow':
-          'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.25), transparent)',
-        'card-shine':
-          'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)',
+        'hero-gradient': 'linear-gradient(180deg, #faf7f2 0%, #f3ede3 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #b08d57, #14213d)',
+      },
+      borderRadius: {
+        card: '14px',
+        pill: '999px',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
@@ -41,19 +48,13 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
       },
       boxShadow: {
-        glow: '0 0 40px rgba(59, 130, 246, 0.15)',
-        'glow-purple': '0 0 40px rgba(139, 92, 246, 0.15)',
-        glass: '0 8px 32px rgba(0, 0, 0, 0.4)',
+        card: '0 12px 40px rgba(20, 33, 61, 0.07)',
       },
     },
   },

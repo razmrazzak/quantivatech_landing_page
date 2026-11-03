@@ -81,7 +81,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
       <article className="container-narrow mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
         <Link
           to="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -89,26 +89,26 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
           {meta.backHome}
         </Link>
 
-        <header className="mb-10 border-b border-white/10 pb-8">
+        <header className="mb-10 border-b border-card-border pb-8">
           <div className="flex items-start gap-4">
             {app.appIcon && (
               <img
                 src={app.appIcon}
                 alt=""
-                className="h-14 w-14 rounded-xl ring-1 ring-white/10"
+                className="h-14 w-14 rounded-xl ring-1 ring-card-border"
                 width={56}
                 height={56}
               />
             )}
             <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-accent-blue">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">
                 {app.name}
               </p>
-              <h1 className="mt-1 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
                 {title}
               </h1>
               {app.tagline && (
-                <p className="mt-2 text-sm text-white/50">{app.tagline}</p>
+                <p className="mt-2 text-sm text-muted">{app.tagline}</p>
               )}
             </div>
           </div>
@@ -119,8 +119,8 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
                 to={isPrivacyFamily ? `/apps/${appId}/privacy` : `/apps/${appId}/terms`}
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   !isGerman
-                    ? 'bg-white/15 text-white'
-                    : 'text-white/50 hover:bg-white/10 hover:text-white'
+                    ? 'bg-gold/20 text-gold'
+                    : 'text-muted hover:bg-card-border/50 hover:text-ink'
                 }`}
               >
                 English
@@ -133,8 +133,8 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
                 }
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   isGerman
-                    ? 'bg-white/15 text-white'
-                    : 'text-white/50 hover:bg-white/10 hover:text-white'
+                    ? 'bg-gold/20 text-gold'
+                    : 'text-muted hover:bg-card-border/50 hover:text-ink'
                 }`}
               >
                 Deutsch
@@ -142,7 +142,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
             </div>
           )}
 
-          <p className="mt-6 text-sm text-white/40">
+          <p className="mt-6 text-sm text-muted/70">
             {document.effectiveDate && (
               <>
                 {meta.effectiveDateLabel}: {document.effectiveDate}
@@ -167,9 +167,9 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
             )}
           </p>
           {app.contactEmail && (
-            <p className="mt-2 text-sm text-white/50">
+            <p className="mt-2 text-sm text-muted">
               {meta.contactLabel}:{' '}
-              <a href={`mailto:${app.contactEmail}`} className="text-accent-blue hover:underline">
+              <a href={`mailto:${app.contactEmail}`} className="text-gold hover:underline">
                 {app.contactEmail}
               </a>
             </p>
@@ -179,7 +179,7 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
               href={document.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-accent-purple/30 bg-accent-purple/10 px-4 py-2 text-sm font-medium text-accent-purple transition-colors hover:bg-accent-purple/20"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-medium text-gold transition-colors hover:bg-gold/20"
             >
               View full document on official site
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,27 +200,27 @@ export default function LegalDocumentPage({ appId: appIdProp, docType: docTypePr
           ))}
         </div>
 
-        <footer className="mt-12 border-t border-white/10 pt-8">
-          <p className="text-sm text-white/50">
+        <footer className="mt-12 border-t border-card-border pt-8">
+          <p className="text-sm text-muted">
             {meta.questions}{' '}
             <a
               href={`mailto:${app.contactEmail}`}
-              className="text-accent-blue hover:underline"
+              className="text-gold hover:underline"
             >
               {app.contactEmail}
             </a>
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             {isPrivacyFamily ? (
-              <Link to={termsPath} className="text-white/50 hover:text-white">
+              <Link to={termsPath} className="text-muted hover:text-ink">
                 {meta.viewTerms(app.name)}
               </Link>
             ) : (
-              <Link to={privacyPath} className="text-white/50 hover:text-white">
+              <Link to={privacyPath} className="text-muted hover:text-ink">
                 {meta.viewPrivacy(app.name)}
               </Link>
             )}
-            <Link to="/" className="text-white/50 hover:text-white">
+            <Link to="/" className="text-muted hover:text-ink">
               {meta.homeLink}
             </Link>
           </div>

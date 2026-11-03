@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ProgressTracker, { StatusBadge } from './ProgressTracker';
 
 function LinkButton({ href, label, icon }) {
@@ -5,7 +6,7 @@ function LinkButton({ href, label, icon }) {
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white"
+      className="inline-flex items-center gap-1.5 rounded-lg border border-card-border bg-card px-3 py-1.5 text-xs text-muted transition-colors hover:border-gold hover:text-gold"
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
     >
@@ -39,38 +40,40 @@ export default function ProductCard({ product }) {
     day: 'numeric',
     year: 'numeric',
   });
+  
+  const slug = product.showcaseId || product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
   return (
-    <article className="gradient-border group flex flex-col rounded-2xl glass p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] hover:shadow-glow">
+    <article className="card group flex flex-col p-6 transition-all duration-300 hover:shadow-xl">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           {product.logoType === 'image' ? (
             <img
               src={product.logo}
               alt=""
-              className="h-12 w-12 shrink-0 rounded-xl shadow-inner ring-1 ring-white/10"
+              className="h-12 w-12 shrink-0 rounded-xl ring-1 ring-card-border"
               width={48}
               height={48}
             />
           ) : (
             <span
-              className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-white/10 to-white/5 text-2xl shadow-inner"
+              className="flex h-12 w-12 items-center justify-center rounded-xl bg-ivory-alt text-2xl"
               aria-hidden
             >
               {product.logo}
             </span>
           )}
           <div>
-            <h3 className="font-semibold text-white group-hover:text-accent-cyan/90 transition-colors">
+            <h3 className="font-semibold text-ink group-hover:text-gold transition-colors">
               {product.name}
             </h3>
-            <p className="text-xs text-accent-purple/80">{product.category}</p>
+            <p className="text-xs text-gold">{product.category}</p>
           </div>
         </div>
         <StatusBadge status={product.status} />
       </div>
 
-      <p className="mb-5 flex-1 text-sm leading-relaxed text-white/60">{product.description}</p>
+      <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">{product.description}</p>
 
       <div className="mb-4">
         <ProgressTracker progress={product.progress} />
@@ -80,7 +83,7 @@ export default function ProductCard({ product }) {
         {product.platforms.map((platform) => (
           <span
             key={platform}
-            className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-1 text-xs text-white/50"
+            className="inline-flex items-center gap-1 rounded-md bg-ivory-alt px-2 py-1 text-xs text-muted"
           >
             {platformIcons[platform]}
             {platform}
@@ -90,26 +93,26 @@ export default function ProductCard({ product }) {
 
       <div className="mb-4 flex flex-wrap gap-2">
         {product.showcaseId && (
-          <a
-            href={`#${product.showcaseId}`}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+          <Link
+            to={`/apps/${slug}`}
+            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
               product.status === 'Live'
-                ? 'border-accent-purple/30 bg-accent-purple/10 text-accent-purple hover:border-accent-purple/50 hover:bg-accent-purple/20'
-                : 'border-orange-500/30 bg-orange-500/10 text-orange-300 hover:border-orange-500/50 hover:bg-orange-500/20'
+                ? 'border-gold bg-gold/10 text-gold hover:bg-gold/20'
+                : 'border-gold/50 bg-gold/5 text-gold/80 hover:bg-gold/10'
             }`}
           >
             <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-            View Details
-          </a>
+            Learn More
+          </Link>
         )}
         <LinkButton href={product.websiteUrl} label="Website" icon={platformIcons.Web} />
         <LinkButton href={product.iosUrl} label="App Store" icon={platformIcons.iOS} />
         <LinkButton href={product.androidUrl} label="Google Play" icon={platformIcons.Android} />
       </div>
 
-      <p className="text-xs text-white/40">Last updated {formattedDate}</p>
+      <p className="text-xs text-muted/70">Last updated {formattedDate}</p>
     </article>
   );
 }
